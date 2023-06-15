@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22",
+    "body-parser": "^1.20.2"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "type": "module",
+  "name": "gym",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

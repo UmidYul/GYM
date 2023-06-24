@@ -1,14 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Gym</title>
 </head>
 
 <body>
-
+    <!-- <form action="/form" method="post">
+        <div>
+            <input placeholder="Имя" required type="text" name="name">
+            <input placeholder="Фамилия" required type="text" name="lastname">
+        </div>
+        <input placeholder="Номер" required type="number" name="number">
+        <select name="gender" required>
+            <option value="Не указан">Пoл</option>
+            <option value="Мужской">Мужской</option>
+            <option value="Женский">Женский</option>
+        </select>
+        <button type="submit">Отправить</button>
+    </form> -->
+    <div class="container">
+        <div class="text">
+            Contact us Form
+        </div>
+        <form action="/form" method="post">
+            <div class="form-row">
+                <div class="input-data">
+                    <input type="text" required name="name">
+                    <div class="underline"></div>
+                    <label for="">Имя</label>
+                </div>
+                <div class="input-data">
+                    <input type="text" required name="lastname">
+                    <div class="underline"></div>
+                    <label for="">Фамилия</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data">
+                    <input type="number" required name="number">
+                    <div class="underline"></div>
+                    <label for="">Номер</label>
+                </div>
+                <div class="input-data">
+                    <input type="text" required name="email">
+                    <div class="underline"></div>
+                    <label for="">Почта</label>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="input-data textarea">
+                    <textarea rows="8" cols="80" required name="text"></textarea>
+                    <br />
+                    <div class="underline"></div>
+                    <label for="">Write your message</label>
+                    <br />
+                    <div class="form-row submit-btn">
+                        <div class="input-data">
+                            <div class="inner"></div>
+                            <input type="submit" value="submit">
+                        </div>
+                    </div>
+        </form>
+    </div>
 </body>
 
 </html>

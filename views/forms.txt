@@ -1,0 +1,30 @@
+ Register
+ 
+     <form action="/register" id="registerForm" method="post">
+        <input type="text" name="name">
+        <input type="date" name="dateofjoin">
+        <input type="number" name="Phone">
+        <input type="text" name="email">
+        <input type="text" name="password">
+        <select onchange="planFunc(value)" id="planSelect" name="plan">
+            <option value="None">Plan</option>
+        </select>
+        <input type="hidden" id="hiddenValidityInput" name="validity">
+        <input type="text" id="priceInput" value="цена" readonly>
+        <input type="hidden" id="hiddenPriceInput" name="price">
+        <button>send</button>
+    </form>
+
+ Payment
+
+  <form action="/add-payment" id="registerForm" method="post">
+        <input type="number" name="id">
+        <select onchange="planFunc(value)" id="planSelect" name="plan">
+            <option value="None">Plan</option>
+        </select>
+        <input type="hidden" id="hiddenValidityInput" name="validity">
+        <input type="text" id="priceInput" value="цена" readonly>
+        <input type="hidden" id="hiddenPriceInput" name="price">
+        <input type="date" name="date">
+        <button>send</button>
+    </form>

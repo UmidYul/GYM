@@ -11,10 +11,6 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/views/main.html")
 })
 
-app.get("/login", (req, res) => {
-    res.sendFile(__dirname + "/views/login.html")
-})
-
 app.get("/admin", (req, res) => {
     res.sendFile(__dirname + "/views/admin.html")
 }) 

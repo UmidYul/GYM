@@ -9,16 +9,17 @@
     {
       "id": 1712418463734,
       "name": "Умид",
-      "email": "yumid2dsa53@gmail.com",
+      "email": "yumid255@gmail.com",
       "password": "1234",
       "dateofjoin": "2024-01-01",
+      "status": "Active",
       "payments": [
         {
           "plan": "3 month",
           "validity": "3",
           "price": "3000000000",
           "payment_date": "2024-01-01",
-          "expire_date": "2024-04-01"
+          "expire_date": "2024-04-08"
         }
       ]
     }
@@ -36,12 +37,7 @@
     },
     {
       "name": "6 month",
-      "validity": "60",
-      "price": "100000"
-    },
-    {
-      "name": "6 month",
-      "validity": "60",
+      "validity": 6,
       "price": 100000
     }
   ],

@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+.container {
+    width: 1134px;
+    margin: 0 auto;
+}
+
+body {
+    background-color: #ECE9E9;
+    position: relative;
+}
+
+.sign_in {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sign_in_title {
+    font-size: 36px;
+    font-weight: bold;
+    padding-top: 174px;
+    color: #1A1363;
+}
+
+.formLogin {
+    padding-top: 55px;
+}
+
+.email_title,
+.password_title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #332F64;
+    padding-bottom: 10px;
+}
+
+.password_title {
+    padding-top: 15px;
+}
+
+.email_title span,
+.password_title span {
+    color: red;
+}
+
+#email,
+#password {
+    width: 406px;
+    height: 69px;
+    border-radius: 10px;
+    border: 2px solid #332F64;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+#Submit {
+    width: 406px;
+    height: 69px;
+    border-radius: 24px;
+    background-color: #1A1363;
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 55px;
+    border: 2px solid #1A1363;
+    transition: 0.3s;
+}
+
+#Submit:hover {
+    background-color: transparent;
+    border: 2px solid #1A1363;
+    color: #1A1363;
+}
+
+.sign_in_right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+}
+
+/* /success/ */
+
+.wrapper-success {
+    margin: 120px;
+}
+
+.wrapper-success .card {
+    width: 720px;
+    height: 120px;
+    background-color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-left: 5px solid #49d761;
+    border-radius: 3px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.wrapper-success .card .subject {
+    margin-right: 180px;
+}
+
+.wrapper-success .card .subject p {
+    color: #909092;
+}
+
+.wrapper-success .card .icon {
+    font-size: 28px;
+    color: #49d761;
+}
+
+.wrapper-success .card .icon-times {
+    font-size: 28px;
+    color: #c3c2c7;
+    cursor: pointer;
+}
+
+/* /warning/ */
+
+.wrapper-warning {
+    margin: 120px;
+}
+
+.wrapper-warning .card {
+    width: 720px;
+    height: 120px;
+    background-color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-left: 5px solid #fdc220;
+    border-radius: 3px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.wrapper-warning .card .subject {
+    margin-right: 180px;
+}
+
+.wrapper-warning .card .subject p {
+    color: #909092;
+}
+
+.wrapper-warning .card .icon {
+    font-size: 28px;
+    color: #fdc220;
+}
+
+.wrapper-warning .card .icon-times {
+    font-size: 28px;
+    color: #c3c2c7;
+    cursor: pointer;
+}
+
+.wrapper-success,
+.wrapper-warning {
+    position: absolute;
+    top: -100px;
+    right: -90px;
+}
+
+.subject {
+    padding-left: 30px;
+}

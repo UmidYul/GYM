@@ -9,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const file = join(__dirname, 'db.json')
 const adapter = new JSONFile(file)
-const defaultData = { admin: [], members: [], plans: [], sales: [], payment: [] }
+const defaultData = { admin: [], members: [], plans: [] }
 const db = new Low(adapter, defaultData)
 const app = express()
 const port = 3000
@@ -37,6 +37,8 @@ app.post("/login", async (req, res) => {
                 status: 200,
                 id: admin.id,
                 name: admin.name,
+                email: admin.email,
+                password: admin.password,
                 access: true
             }))
         }
@@ -58,9 +60,9 @@ app.post("/login", async (req, res) => {
                 if (members[index].password == password) {
                     res.send(JSON.stringify({
                         status: 200,
-                        id: members[index].id,
+                        access: false,
                         name: members[index].name,
-                        access: false
+                        info: members[index]
                     }))
                 } else {
                     res.send("!pass")
@@ -85,10 +87,11 @@ app.post("/register", async (req, res) => {
         email: email,
         password: password,
         dateofjoin: dateofjoin,
+        status: "Active",
         payments: [{
             plan: plan,
-            validity: validity,
-            price: price,
+            validity: +validity,
+            price: +price,
             payment_date: dateofjoin,
             expire_date: expire
         }]
@@ -115,10 +118,11 @@ app.post("/add-payment", async (req, res) => {
         const date1 = new Date(date);
         date1.setMonth(date1.getMonth() + Number(validity));
         const expire = date1.toISOString().split('T')[0]
+        members[index].status = "Active"
         members[index].payments.push({
             plan: plan,
-            validity: validity,
-            price: price,
+            validity: +validity,
+            price: +price,
             payment_date: date,
             expire_date: expire
         })
@@ -154,7 +158,7 @@ app.post("/add-plan", async (req, res) => {
     const { plans } = db.data
     plans.push({
         name: name,
-        validity: validity,
+        validity: Number(validity),
         price: Number(price)
     })
     db.write()
@@ -164,4 +168,22 @@ app.post("/getPlans", async (req, res) => {
     const { plans } = db.data
     res.send(JSON.stringify({ obj: plans }))
 })
+
+setInterval(async () => {
+    await db.read()
+    const { members } = db.data
+    for (let i = 0; i < members.length; i++) {
+        const e = members[i];
+        const date1 = new Date();
+        const date2 = new Date(e.payments[e.payments.length - 1].expire_date);
+        if (date1 >= date2) {
+            if (e.status == "Active") {
+                e.status = "Expired"
+                db.write()
+                console.log(e);
+            }
+        }
+    }
+}, 24 * 60 * 60 * 1000);
+
 app.listen(port, () => console.log("http://localhost:" + port))

@@ -5,10 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <title>Gym</title>
 </head>
 
 <body>
+
+    <div class="profile" style="display: none;">
+        <div class="profile_card">
+            <div class="profile_block">
+                <div class="profile_back">
+                    <a onclick="back()" class="profile_back_text"><img src="/images/profile_back.png" alt=""
+                            class="profile_picture"><span>Back</span>
+                    </a>
+                    <div class="profile_photo">
+                        <img src="/images/profile_person.png" alt="" class="profile_photo_main">
+                        <a class="link_profile">
+                            <img src="/images/profile_edit.png" alt="" class="profile_photo_secondary"><span
+                                class="profile_update">Update Profile</span>
+                        </a>
+                    </div>
+                    <div class="profile_data">
+                        <div class="profile_date_left">
+                            <span class="profile_date_left_text">Username:</span>
+                            <span class="profile_date_left_text">Contact num.:</span>
+                            <span class="profile_date_left_text">Email Address:</span>
+                            <span class="profile_date_left_text">Plan:</span>
+                            <span class="profile_date_left_text">Expired date:</span>
+                        </div>
+                        <div class="profile_date_right">
+                            <span class="profile_date_left_text">JuanDelaCruz</span>
+                            <span class="profile_date_left_text">09123456789</span>
+                            <span class="profile_date_left_text">juan.delacruz@gmail.com</span>
+                            <span class="profile_date_left_text">6 month</span>
+                            <span class="profile_date_left_text">07.10.2024</span>
+                        </div>
+                    </div>
+                    <button class="profile_btn" onclick="signOut()">Sign Out</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="section_1">
         <div class="container">
             <div class="header">
@@ -16,11 +53,10 @@
                 <div class="header_nav">
                     <ul class="headaer_ul">
                         <li class="header_li"><a href="#" class="header_a">О Нас</a></li>
-                        <li class="header_li"><a href="#" class="header_a">Почему мы?</a></li>
                         <li class="header_li"><a href="#" class="header_a">План</a></li>
                         <li class="header_li"><a href="#" class="header_a">Тренеры</a></li>
                         <li class="header_li"><a href="#" class="header_a">Посетите Наш Зал</a></li>
-                        <span><a href="/login" class="link_btn">Sign in</a></span>
+                        <span><button style="cursor: pointer;" class="link_btn loginBtn"></button></span>
                     </ul>
                 </div>
             </div>
@@ -60,7 +96,8 @@
                     <div class="body_part_2_img"><img src="/images/body_part_2_img.png" alt=""></div>
                     <div class="body_part_2_active">
                         <div class="body_part_2_active_text">
-                            Stamina Gym Fitness Center provides proper training and conditioning for members who want to
+                            Stamina Gym Fitness Center provides proper training and conditioning for members who
+                            want to
                             improve and transform their body with Program depend on the body composition.
                         </div>
                         <div class="body_part_2_active_card_title">Что мы предлагаем:</div>
@@ -86,10 +123,14 @@
                     Our <span>Plan:</span>
                 </div>
                 <div class="body_part_3_cards">
-                    <div class="body_part_3_card body_3_card_1"><img src="/images/body_3_card_img_1.png" alt=""></div>
-                    <div class="body_part_3_card body_3_card_2"><img src="/images/body_3_card_img_2.png" alt=""></div>
-                    <div class="body_part_3_card body_3_card_3"><img src="/images/body_3_card_img_3.png" alt=""></div>
-                    <div class="body_part_3_card body_3_card_4"><img src="/images/body_3_card_img_4.png" alt=""></div>
+                    <div class="body_part_3_card body_3_card_1"><img src="/images/body_3_card_img_1.png" alt="">
+                    </div>
+                    <div class="body_part_3_card body_3_card_2"><img src="/images/body_3_card_img_2.png" alt="">
+                    </div>
+                    <div class="body_part_3_card body_3_card_3"><img src="/images/body_3_card_img_3.png" alt="">
+                    </div>
+                    <div class="body_part_3_card body_3_card_4"><img src="/images/body_3_card_img_4.png" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -178,5 +219,46 @@
     </div>
 
 </body>
+<script>
+    window.onload = () => {
+        const info = JSON.parse(localStorage.getItem("info"))
+        document.getElementsByClassName("link_profile")[0].href = `/edit-profile:${info.info.id}`
+    }
+
+    function signOut() {
+        localStorage.clear()
+        window.location = "/"
+    }
+    function back() {
+        const prof = document.getElementsByClassName("profile")[0]
+        prof.style.display = "none"
+    }
+    const btn = document.getElementsByClassName("loginBtn")[0]
+    if (localStorage.getItem("info")) {
+        const info = JSON.parse(localStorage.getItem("info"))
+        if (info.access == true) {
+            btn.innerHTML = `
+            <i class="fa-solid fa-table-columns"></i> Dashboard
+            `
+            btn.addEventListener('click', () => {
+                window.location = "/admin"
+            })
+        }
+        if (info.access == false) {
+            btn.innerHTML = `
+            <i class="fa-solid fa-user"></i> Profile
+            `
+            btn.addEventListener('click', () => {
+                const prof = document.getElementsByClassName("profile")[0]
+                prof.style.display = "block"
+            })
+        }
+    } else {
+        btn.innerText = "Sign In"
+        btn.addEventListener('click', () => {
+            window.location = "/login"
+        })
+    }
+</script>
 
 </html>

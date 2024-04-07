@@ -434,8 +434,127 @@ address {
     font-size: 15px;
     font-weight: 400;
     transition: 0.4s;
+    color: #000;
 }
 
 .footer_gym_li:hover a {
     padding-left: 5px;
+}
+
+.profile {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #6f6f6ff0;
+    z-index: 5;
+}
+
+.profile_card {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile_block {
+    width: 50%;
+    height: 75%;
+    border-radius: 25px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.profile_data {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding-top: 30px;
+    padding-bottom: 35px;
+}
+
+.profile_date_left {
+    text-align: right;
+}
+
+.profile_date_right {
+    text-align: left;
+}
+
+.profile_date_left,
+.profile_date_right {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.profile_photo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 57px;
+}
+
+.profile_photo_main {
+    width: 141px;
+}
+
+.profile_photo_secondary {
+    width: 25px;
+}
+
+.profile_photo a {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+
+.profile_update {
+    font-size: 20px;
+    color: #2B2B2B;
+}
+
+.profile_btn {
+    padding: 15px 30px;
+    color: #fff;
+    border-radius: 80px;
+    background-color: #FD2121;
+    font-size: 25px;
+    font-weight: bold;
+    border: 2px solid #FD2121;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.profile_btn:hover {
+    background-color: transparent;
+    color: #FD2121;
+}
+
+.profile_back_text {
+    color: #2B2B2B;
+    font-size: 20px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 28px;
+    top: 28px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.profile_picture {
+    width: 33px;
+}
+
+.profile_back {
+    position: relative;
 }

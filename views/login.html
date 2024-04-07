@@ -5,21 +5,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet" />
+
 </head>
 
 <body>
-    <div class="formLogin">
-        <p id="msg"></p>
-        <input required type="text" id="email">
-        <input required type="text" id="password">
-        <button onclick="func()" id="Submit">login</button>
+
+    <div class="section_1">
+        <div class="container">
+
+            <div class="wrapper-success animate__animated animate__backInRight" style="display: none; z-index: 999;">
+                <div class="card">
+                    <div class="icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="subject">
+                        <h3>Success</h3>
+                        <p id="msg_success"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wrapper-warning animate__animated animate__backInRight" style="display: none; z-index: 999;">
+                <div class="card">
+                    <div class="icon"><i class="fas fa-exclamation-circle"></i></div>
+                    <div class="subject">
+                        <h3>Warning</h3>
+                        <p id="msg_err"></p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="sign_in">
+                <div class="sign_in_left">
+                    <div class="sign_in_title">Sign-in</div>
+                    <div class="formLogin">
+                        <p id="msg"></p>
+                        <h1 class="email_title">Email<span>*</span></h1>
+                        <input required type="text" id="email">
+                        <h1 class="password_title">Password<span>*</span></h1>
+                        <input required type="password" id="password"> <br>
+                        <button onclick="func()" id="Submit">Login</button>
+                    </div>
+                </div>
+                <div class="sign_in_right"><img src="/images/body_part_1_img.png" alt=""></div>
+            </div>
+        </div>
     </div>
+
 </body>
 <script>
+    if (localStorage.getItem("info")) {
+        window.location = "/"
+    }
     function func() {
         const email = document.getElementById("email")
         const password = document.getElementById("password")
-        const msg = document.getElementById("msg")
+        const msg_success = document.getElementById("msg_success")
+        const msg_err = document.getElementById("msg_err")
         const res = fetch("/login", {
             method: 'POST',
             headers: {
@@ -30,18 +77,28 @@
             .then(res => res.json())
             .then(dat => {
                 if (dat.status == 404) {
-                    msg.innerText = "Простите Логин или Пароль Не Правильные Попробуйте Заново!"
+                    document.getElementsByClassName("wrapper-warning")[0].style.display = "block"
+                    msg_err.innerText = "Простите Логин или Пароль Не Правильные Попробуйте Заново!"
+                    setTimeout(() => {
+                        document.getElementsByClassName("wrapper-warning")[0].classList.remove("animate__backInRight")
+                        document.getElementsByClassName("wrapper-warning")[0].classList.add("animate__backOutRight")
+                        setTimeout(() => {
+                            document.getElementsByClassName("wrapper-warning")[0].style.display = "none"
+                            document.getElementsByClassName("wrapper-warning")[0].classList.add("animate__backInRight")
+                            document.getElementsByClassName("wrapper-warning")[0].classList.remove("animate__backOutRight")
+
+                        }, 500);
+                    }, 5000);
                 }
                 if (dat.status == 200) {
-                    console.log(dat.id);
-                    localStorage.setItem("id", dat.id)
-                    localStorage.setItem("name", dat.name)
-                    msg.innerText = `${dat.name} Добро Пожаловать!`
+                    localStorage.setItem("info", JSON.stringify(dat))
+                    document.getElementsByClassName("wrapper-success")[0].style.display = "block"
+                    msg_success.innerText = `${dat.name} Добро Пожаловать!`
                     setTimeout(() => {
                         if (dat.access == true) {
                             window.location = "/admin"
                         } else {
-                            window.location = "/profile:" + dat.id
+                            window.location = "/"
                         }
                     }, 1000);
                 }

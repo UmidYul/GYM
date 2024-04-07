@@ -11,6 +11,9 @@
 
 </body>
 <script>
+    if (JSON.parse(localStorage.getItem("info")).id != 1234567890123) {
+        window.location = "/"
+    }
     const res = fetch("/getPlans", {
         method: 'POST',
         headers: {

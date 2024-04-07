@@ -38,6 +38,7 @@ app.post("/login", async (req, res) => {
                 id: admin.id,
                 name: admin.name,
                 email: admin.email,
+                phone: admin.phone,
                 password: admin.password,
                 access: true
             }))
@@ -76,7 +77,7 @@ app.post("/login", async (req, res) => {
 app.post("/register", async (req, res) => {
     await db.read()
     const { members } = db.data
-    const { name, email, validity, password, plan, price, dateofjoin } = req.body
+    const { name, email, validity, password, phone, plan, price, dateofjoin } = req.body
     const id = Date.now() + Math.floor(Math.random() * 900) + 100;
     const date = new Date(req.body.dateofjoin);
     date.setMonth(date.getMonth() + Number(validity));
@@ -86,6 +87,7 @@ app.post("/register", async (req, res) => {
         name: name,
         email: email,
         password: password,
+        phone: phone,
         dateofjoin: dateofjoin,
         status: "Active",
         payments: [{

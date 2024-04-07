@@ -34,11 +34,7 @@
                             <span class="profile_date_left_text">Expired date:</span>
                         </div>
                         <div class="profile_date_right">
-                            <span class="profile_date_left_text">JuanDelaCruz</span>
-                            <span class="profile_date_left_text">09123456789</span>
-                            <span class="profile_date_left_text">juan.delacruz@gmail.com</span>
-                            <span class="profile_date_left_text">6 month</span>
-                            <span class="profile_date_left_text">07.10.2024</span>
+
                         </div>
                     </div>
                     <button class="profile_btn" onclick="signOut()">Sign Out</button>
@@ -49,13 +45,13 @@
     <div class="section_1">
         <div class="container">
             <div class="header">
-                <div class="header_logo"><a href="#"><img src="/images/logoclient.png" alt="logoclient"></a></div>
+                <div class="header_logo"><a href="/"><img src="/images/logoclient.png" alt="logoclient"></a></div>
                 <div class="header_nav">
                     <ul class="headaer_ul">
-                        <li class="header_li"><a href="#" class="header_a">О Нас</a></li>
-                        <li class="header_li"><a href="#" class="header_a">План</a></li>
-                        <li class="header_li"><a href="#" class="header_a">Тренеры</a></li>
-                        <li class="header_li"><a href="#" class="header_a">Посетите Наш Зал</a></li>
+                        <li class="header_li"><a href="#about" class="header_a">О Нас</a></li>
+                        <li class="header_li"><a href="#plan" class="header_a">План</a></li>
+                        <li class="header_li"><a href="#coaches" class="header_a">Тренеры</a></li>
+                        <li class="header_li"><a href="#visit" class="header_a">Посетите Наш Зал</a></li>
                         <span><button style="cursor: pointer;" class="link_btn loginBtn"></button></span>
                     </ul>
                 </div>
@@ -72,7 +68,7 @@
                         Приведи себя в порядок!
                         <span>Присоединяйся к нам!</span>
                     </h1>
-                    <a href="#" class="body_part_1_btn">Подробнее </a>
+                    <a href="#about" class="body_part_1_btn">Подробнее </a>
                 </div>
 
                 <div class="body_1_img">
@@ -85,7 +81,7 @@
         </div>
     </div>
 
-    <div class="section_3">
+    <div class="section_3" id="about">
         <div class="container">
             <div class="body_part_2">
                 <div class="body_part_2_texts">
@@ -112,7 +108,7 @@
         </div>
     </div>
 
-    <div class="section_4">
+    <div class="section_4" id="plan">
         <div class="section_4_bg_img"><img src="/images/body_part_3_bg.png" alt=""></div>
         <div class="container">
             <div class="body_part_3">
@@ -136,7 +132,7 @@
         </div>
     </div>
 
-    <div class="section_5">
+    <div class="section_5" id="coaches">
         <div class="container">
             <div class="body_part_4">
                 <div class="body_part_4_title">Тренеры</div>
@@ -161,7 +157,7 @@
         </div>
     </div>
 
-    <div class="section_6">
+    <div class="section_6" id="visit">
         <div class="container">
             <div class="body_part_5">
                 <div class="body_part_5_map"></div>
@@ -223,6 +219,13 @@
     window.onload = () => {
         const info = JSON.parse(localStorage.getItem("info"))
         document.getElementsByClassName("link_profile")[0].href = `/edit-profile:${info.info.id}`
+        document.getElementsByClassName("profile_date_right")[0].innerHTML = `
+<span class="profile_date_left_text">${info.info.name}</span>
+<span class="profile_date_left_text">${info.info.phone}</span>
+<span class="profile_date_left_text">${info.info.email}</span>
+<span class="profile_date_left_text">${info.info.payments[info.info.payments.length - 1].plan}</span>
+<span class="profile_date_left_text">${info.info.payments[info.info.payments.length - 1].expire_date}</span>
+        `
     }
 
     function signOut() {

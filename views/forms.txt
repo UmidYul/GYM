@@ -3,7 +3,7 @@
      <form action="/register" id="registerForm" method="post">
         <input type="text" required name="name">
         <input type="date" required name="dateofjoin">
-        <input type="number" required name="Phone">
+        <input type="number" required name="phone">
         <input type="text" required name="email">
         <input type="text" required name="password">
         <select required onchange="planFunc(value)" id="planSelect" name="plan">

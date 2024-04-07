@@ -2,7 +2,7 @@
   "admin": {
     "id": 1234567890123,
     "name": "Jhon Doe",
-    "email": "yumid253@gmail.com",
+    "email": "admin",
     "password": "1234",
     "phone": "+998905329686"
   },

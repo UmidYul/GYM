@@ -1,39 +1,39 @@
  Register
  
      <form action="/register" id="registerForm" method="post">
-        <input type="text" name="name">
-        <input type="date" name="dateofjoin">
-        <input type="number" name="Phone">
-        <input type="text" name="email">
-        <input type="text" name="password">
-        <select onchange="planFunc(value)" id="planSelect" name="plan">
+        <input type="text" required name="name">
+        <input type="date" required name="dateofjoin">
+        <input type="number" required name="Phone">
+        <input type="text" required name="email">
+        <input type="text" required name="password">
+        <select required onchange="planFunc(value)" id="planSelect" name="plan">
             <option value="None">Plan</option>
         </select>
-        <input type="hidden" id="hiddenValidityInput" name="validity">
-        <input type="text" id="priceInput" value="цена" readonly>
-        <input type="hidden" id="hiddenPriceInput" name="price">
+        <input type="hidden" required id="hiddenValidityInput" name="validity">
+        <input type="text" required id="priceInput" value="цена" readonly>
+        <input type="hidden" required id="hiddenPriceInput" name="price">
         <button>send</button>
     </form>
 
  Payment
 
   <form action="/add-payment" id="registerForm" method="post">
-        <input type="number" name="id">
-        <select onchange="planFunc(value)" id="planSelect" name="plan">
+        <input type="number" required name="id">
+        <select required onchange="planFunc(value)" id="planSelect" name="plan">
             <option value="None">Plan</option>
         </select>
-        <input type="hidden" id="hiddenValidityInput" name="validity">
-        <input type="text" id="priceInput" value="цена" readonly>
-        <input type="hidden" id="hiddenPriceInput" name="price">
-        <input type="date" name="date">
+        <input type="hidden" required id="hiddenValidityInput" name="validity">
+        <input type="text" required id="priceInput" value="цена" readonly>
+        <input type="hidden" required id="hiddenPriceInput" name="price">
+        <input type="date" required name="date">
         <button>send</button>
     </form>
 
  Plan     
  
  <form action="/add-plan" method="post">
-        <input type="text" name="name">
-        <input type="number" name="validity">
-        <input type="number" name="price">
+        <input type="text" required name="name">
+        <input type="number" required name="validity">
+        <input type="number" required name="price">
         <button>send</button>
     </form>

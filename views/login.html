@@ -8,11 +8,45 @@
 </head>
 
 <body>
-    <form action="/login" method="post">
-        <input type="text" name="email">
-        <input type="text" name="password">
-        <button>login</button>
-    </form>
+    <div class="formLogin">
+        <p id="msg"></p>
+        <input type="text" id="email">
+        <input type="text" id="password">
+        <button onclick="func()" id="Submit">login</button>
+    </div>
 </body>
+<script>
+    function func() {
+        const email = document.getElementById("email")
+        const password = document.getElementById("password")
+        const msg = document.getElementById("msg")
+        const res = fetch("/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: email.value, password: password.value })
+        })
+            .then(res => res.json())
+            .then(dat => {
+                if (dat.status == 404) {
+                    msg.innerText = "Простите Логин или Пароль Не Правильные Попробуйте Заново!"
+                }
+                if (dat.status == 200) {
+                    console.log(dat.id);
+                    localStorage.setItem("id", dat.id)
+                    localStorage.setItem("name", dat.name)
+                    msg.innerText = `${dat.name} Добро Пожаловать!`
+                    setTimeout(() => {
+                        if (dat.access == true) {
+                            window.location = "/admin"
+                        } else {
+                            window.location = "/profile:" + dat.id
+                        }
+                    }, 1000);
+                }
+            })
+    }
+</script>
 
 </html>

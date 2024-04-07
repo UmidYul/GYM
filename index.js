@@ -32,9 +32,13 @@ app.post("/login", async (req, res) => {
     const { email, password } = req.body
     const { members, admin } = db.data
     if (email == admin.email) {
-        console.log(1);
         if (password == admin.password) {
-            res.send("admin")
+            res.send(JSON.stringify({
+                status: 200,
+                id: admin.id,
+                name: admin.name,
+                access: true
+            }))
         }
     }
     else {
@@ -50,9 +54,20 @@ app.post("/login", async (req, res) => {
         const emailToFind = email;
         const index = findIndexByEmail(emailToFind, members);
         if (index !== -1) {
-            res.send("member")
+            if (members[index].email == email) {
+                if (members[index].password == password) {
+                    res.send(JSON.stringify({
+                        status: 200,
+                        id: members[index].id,
+                        name: members[index].name,
+                        access: false
+                    }))
+                } else {
+                    res.send("!pass")
+                }
+            }
         } else {
-            res.send("404")
+            res.send(JSON.stringify({ status: 404 }))
         }
     }
 })
@@ -132,6 +147,17 @@ app.post("/price", async (req, res) => {
     } else {
         res.send(JSON.stringify({ text: "Нет Такого Плана!" }))
     }
+})
+app.post("/add-plan", async (req, res) => {
+    const { name, price, validity } = req.body
+    await db.read()
+    const { plans } = db.data
+    plans.push({
+        name: name,
+        validity: validity,
+        price: Number(price)
+    })
+    db.write()
 })
 app.post("/getPlans", async (req, res) => {
     await db.read()

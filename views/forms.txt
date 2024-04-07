@@ -28,3 +28,12 @@
         <input type="date" name="date">
         <button>send</button>
     </form>
+
+ Plan     
+ 
+ <form action="/add-plan" method="post">
+        <input type="text" name="name">
+        <input type="number" name="validity">
+        <input type="number" name="price">
+        <button>send</button>
+    </form>

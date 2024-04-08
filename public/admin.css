@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Montserrat", sans-serif;
+}
+
+.section_1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 70%;
+    height: 85%;
+    margin: 0 auto;
+    border-radius: 18px;
+    box-shadow: 4px 4px 20px #000;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.admin_left_panel{
+    background-color: #1A1363;
+    width: 25%;
+}
+
+.profile_information{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    color: #fff;
+}
+
+.profile_name{
+    font-size: 15px;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+.profile_email{
+    font-size: 10px;
+    font-weight: 400;
+    padding-top: 7px;
+}
+
+.profiole_nav_ul{
+    display: flex;
+    flex-direction: column;
+    padding-top: 35px;
+    align-items: right;
+}
+
+.profile_nav_li{
+    list-style: none;
+    padding: 5px 25px;
+    padding-right: -100px;
+}
+
+.profile_nav_a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 400;
+    font-size: 13px;
+    display: flex;
+    gap: 15px;
+    padding: 10px 15px;
+    transition: 0.4s;
+    border-radius: 10px 0px 0px 10px;
+    position: relative;
+}
+
+.profile_nav_a::after{
+    content: "";
+    position: absolute;
+    height: 10px;
+    background-color: #ECE9E9;
+    right: -30px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    transition: 0.4s;
+    transition: all 0.4s;
+}
+
+.profile_nav_a:hover{
+    background-color: #ECE9E9;
+    color: #1A1363;
+}
+
+.profile_nav_a:hover:after{
+    width: 70px;
+    background-color: #ECE9E9;
+}
+
+.profile_nav_a i{
+    font-size: 16px;
+}
+
+.profile_log_out{
+    display: flex;
+    gap: 8px;
+    text-decoration: none;
+    color: #fff;
+    padding-left: 40px;
+    font-weight: 400;
+    font-size: 13px;
+    display: flex;
+    gap: 15px;
+    padding-top: 30px;
+}
+
+.profile_log_out i{
+    font-size: 16px;
+}
+
+.admin_right_panel{
+    background-color: #ECE9E9;
+    width: 75%;
+}
+
+.row{
+    width: 85%;
+    margin: 0 auto;
+}
+
+.admin_right_panel_header{
+    display: flex;
+    padding-top: 30px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin_right_panel_header_feedback{
+    color: #1A1363;
+    font-weight: 500;
+    display: flex;
+    gap: 30px;
+    font-size: 16px;
+}
+
+.admin_right_panel_content_1{
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.admin_right_panel_content_1_row_1{
+    height: 140px;
+}
+
+.block{
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    box-shadow:2px 2px 5px #333333 ;
+    border-radius: 12px;
+}
+
+.admin_right_panel_content_1_row_2{
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    height: 198px;
+}

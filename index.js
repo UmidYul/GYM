@@ -4,6 +4,7 @@ import { dirname, join } from 'path';
 import bodyParser from "body-parser";
 import { Low } from 'lowdb'
 import { JSONFile } from 'lowdb/node'
+import cron from "node-cron"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -82,6 +83,7 @@ app.post("/register", async (req, res) => {
     const date = new Date(req.body.dateofjoin);
     date.setMonth(date.getMonth() + Number(validity));
     const expire = date.toISOString().split('T')[0]
+    console.log(expire);
     members.push({
         id: id,
         name: name,
@@ -171,7 +173,7 @@ app.post("/getPlans", async (req, res) => {
     res.send(JSON.stringify({ obj: plans }))
 })
 
-setInterval(async () => {
+cron.schedule('0 0 * * *', async () => {
     await db.read()
     const { members } = db.data
     for (let i = 0; i < members.length; i++) {
@@ -182,10 +184,9 @@ setInterval(async () => {
             if (e.status == "Active") {
                 e.status = "Expired"
                 db.write()
-                console.log(e);
             }
         }
     }
-}, 24 * 60 * 60 * 1000);
+});
 
 app.listen(port, () => console.log("http://localhost:" + port))

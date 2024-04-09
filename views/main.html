@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <title>Gym</title>
 </head>
 
@@ -20,10 +21,6 @@
                     </a>
                     <div class="profile_photo">
                         <img src="/images/profile_person.png" alt="" class="profile_photo_main">
-                        <a class="link_profile">
-                            <img src="/images/profile_edit.png" alt="" class="profile_photo_secondary"><span
-                                class="profile_update">Update Profile</span>
-                        </a>
                     </div>
                     <div class="profile_data">
                         <div class="profile_date_left">
@@ -32,6 +29,7 @@
                             <span class="profile_date_left_text">Email Address:</span>
                             <span class="profile_date_left_text">Plan:</span>
                             <span class="profile_date_left_text">Expired date:</span>
+                            <span class="profile_date_left_text">Status:</span>
                         </div>
                         <div class="profile_date_right">
 
@@ -218,16 +216,17 @@
 <script>
     window.onload = () => {
         const info = JSON.parse(localStorage.getItem("info"))
-        document.getElementsByClassName("link_profile")[0].href = `/edit-profile:${info.info.id}`
-        document.getElementsByClassName("profile_date_right")[0].innerHTML = `
+        if (info.access != true) {
+            document.getElementsByClassName("profile_date_right")[0].innerHTML = `
 <span class="profile_date_left_text">${info.info.name}</span>
 <span class="profile_date_left_text">${info.info.phone}</span>
 <span class="profile_date_left_text">${info.info.email}</span>
 <span class="profile_date_left_text">${info.info.payments[info.info.payments.length - 1].plan}</span>
 <span class="profile_date_left_text">${info.info.payments[info.info.payments.length - 1].expire_date}</span>
+<span class="profile_date_left_text">${info.info.status === "Active" ? "Активный" : "Истёк"}</span >
         `
+        }
     }
-
     function signOut() {
         localStorage.clear()
         window.location = "/"
@@ -241,7 +240,7 @@
         const info = JSON.parse(localStorage.getItem("info"))
         if (info.access == true) {
             btn.innerHTML = `
-            <i class="fa-solid fa-table-columns"></i> Dashboard
+        <i class="fa-solid fa-table-columns"></i> Dashboard
             `
             btn.addEventListener('click', () => {
                 window.location = "/admin"

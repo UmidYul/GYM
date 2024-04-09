@@ -2,7 +2,7 @@
   "admin": {
     "id": 1234567890123,
     "name": "Jhon Doe",
-    "email": "jhondoe@gmail.com",
+    "email": "yumid257@gmail.com",
     "password": "1234",
     "phone": "+998905329686"
   },
@@ -10,7 +10,7 @@
     {
       "id": 1712418463734,
       "name": "Умид",
-      "email": "member1",
+      "email": "yumid253@gmail.com",
       "password": "1234",
       "phone": "+998905329686",
       "dateofjoin": "2024-01-01",

@@ -1,29 +1,34 @@
 import nodemailer from "nodemailer"
-const mailAddress = "webxperts.uz@gmail.com"
+const mailAddress = 'webxperts.uz@internet.ru'
 // Create a transporter object using SMTP
-let transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
+const transporter = nodemailer.createTransport({
+    host: 'smtp.mail.ru',
     port: 465,
-    secure: false, // true for 465, false for other ports
+    secure: true,
     auth: {
         user: mailAddress,
-        pass: 'i312100f'
+        pass: 'RaAMZUkqk2XLQkjXcCNp'
+    }
+});
+transporter.verify(function (error, success) {
+    if (error) {
+        console.log('Ошибка при проверке подключения к SMTP серверу:', error);
+    } else {
+        console.log('Подключение к SMTP серверу успешно:', success);
     }
 });
 export function SendEmail(email, subject, text) {
-    // Setup email data
-    let mailOptions = {
-        from: `"Sender Name" <${mailAddress}>`,
-        to: email,
-        subject: subject,
-        text: text
-    };
+    // let mailOptions = {
+    //     from: `Stamina Fitness ${mailAddress}`,
+    //     to: email,
+    //     subject: subject,
+    //     text: text
+    // };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            return console.log(error);
-        }
-        console.log('Message sent: %s', info.messageId);
-    });
-
+    // transporter.sendMail(mailOptions, (error, info) => {
+    //     if (error) {
+    //         return console.log(error);
+    //     }
+    // });
+    console.log(200);
 }

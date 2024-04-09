@@ -31,7 +31,7 @@ app.get("/login", (req, res) => {
 })
 app.post("/login", async (req, res) => {
     await db.read()
-    const { email, password } = req.body
+    const { email, password, ip, date } = req.body
     const { members, admin } = db.data
     if (email == admin.email) {
         if (password == admin.password) {
@@ -44,6 +44,22 @@ app.post("/login", async (req, res) => {
                 password: admin.password,
                 access: true
             }))
+            SendEmail(admin.email, "Уведомление о входе в аккаунт!", `
+                    Здравствуйте ${admin.name},
+                    
+                    Мы обращаемся к вам, чтобы уведомить о том, что недавно произошел вход в ваш аккаунт ${admin.email}. 
+                    
+                    Время входа: ${date}
+                    IP-адрес входа: ${ip}
+                    
+                    Если вы не совершали это действие, немедленно выполните следующие шаги:
+                    
+                    1. Измените пароль аккаунта.
+                    2. Свяжитесь с нами, если у вас возникли какие-либо вопросы или подозрения на несанкционированный доступ к вашему аккаунту.
+                    
+                    С уважением,
+                    Stamina Fitness
+                    `)
         }
     }
     else {
@@ -67,8 +83,39 @@ app.post("/login", async (req, res) => {
                         name: members[index].name,
                         info: members[index]
                     }))
+                    SendEmail(members[index].email, "Уведомление о входе в аккаунт!", `
+                    Здравствуйте ${members[index].name},
+                    
+                    Мы обращаемся к вам, чтобы уведомить о том, что недавно произошел вход в ваш аккаунт ${members[index].email}. 
+                    
+                    Время входа: ${date}
+                    IP-адрес входа: ${ip}
+                    
+                    Если вы не совершали это действие, немедленно выполните следующие шаги:
+                    
+                    1. Измените пароль аккаунта.
+                    2. Свяжитесь с нами, если у вас возникли какие-либо вопросы или подозрения на несанкционированный доступ к вашему аккаунту.
+                    
+                    С уважением,
+                    Stamina Fitness
+                    `)
                 } else {
-                    res.send("!pass")
+                    SendEmail(members[index].email, "Не завершённый вход в аккаунт!", `
+                    Здравствуйте ${members[index].name},
+                    
+                    Мы обращаемся к вам, чтобы уведомить о том, что недавно произошла попытка входа в ваш аккаунт ${members[index].email}. 
+                    
+                    Время входа: ${date}
+                    IP-адрес входа: ${ip}
+                    
+                    Если вы не совершали это действие, немедленно выполните следующие шаги:
+                    
+                    1. Измените пароль аккаунта.
+                    2. Свяжитесь с нами, если у вас возникли какие-либо вопросы или подозрения на несанкционированный доступ к вашему аккаунту.
+                    
+                    С уважением,
+                    Stamina Fitness
+                    `)
                 }
             }
         } else {
@@ -84,7 +131,6 @@ app.post("/register", async (req, res) => {
     const date = new Date(req.body.dateofjoin);
     date.setMonth(date.getMonth() + Number(validity));
     const expire = date.toISOString().split('T')[0]
-    console.log(expire);
     members.push({
         id: id,
         name: name,
@@ -101,6 +147,32 @@ app.post("/register", async (req, res) => {
             expire_date: expire
         }]
     })
+    SendEmail(email, "Успешная регистрация на сайте!", `
+    Здравствуйте ${name},
+    
+    Вы успешно зарегистрировались на нашем сайте. Ваш аккаунт был создан с следующими данными:
+    
+    ID: ${id}
+    Имя: ${name}
+    Электронная почта: ${email}
+    Пароль:${password} 
+    Телефон: ${phone}
+    Дата регистрации: ${dateofjoin}
+    Статус: Активен
+    
+    Данные платежа:
+    - План: ${plan}
+    - Срок действия: ${validity} дней
+    - Цена: ${price} сум
+    - Дата платежа: ${dateofjoin}
+    - Дата истечения: ${expire}
+    
+    Спасибо за регистрацию!
+    
+    С уважением,
+
+    Stamina Fitness
+    `)
     db.write()
     res.redirect("/admin")
 })
@@ -124,13 +196,34 @@ app.post("/add-payment", async (req, res) => {
         date1.setMonth(date1.getMonth() + Number(validity));
         const expire = date1.toISOString().split('T')[0]
         members[index].status = "Active"
+        const id = Date.now()
         members[index].payments.push({
+            id: id,
             plan: plan,
             validity: +validity,
             price: +price,
             payment_date: date,
             expire_date: expire
         })
+        SendEmail(email, "Подтверждение успешной оплаты!", `  
+        Уважаемый ,
+        
+        Мы рады сообщить вам, что ваш платеж успешно обработан. Ниже приведены детали вашего платежа:
+        
+        Данные платежа:
+        - ID: ${id}
+        - План: ${plan}
+        - Срок действия: ${validity} дней
+        - Цена: ${price} сум
+        - Дата платежа: ${date}
+        - Дата истечения: ${expire}
+        
+        Благодарим вас за доверие и использование наших услуг.
+        
+        С уважением,        
+    
+        Stamina Fitness
+        `)
         db.write()
     } else {
         res.send(JSON.stringify({ text: "Данный Пользователь Не Найден!" }))
@@ -175,6 +268,7 @@ app.post("/getPlans", async (req, res) => {
 })
 
 cron.schedule('0 0 * * *', async () => {
+    SendEmail("yumid253@gmail.com", "Time Test №1", `Test 1`)
     await db.read()
     const { members } = db.data
     for (let i = 0; i < members.length; i++) {

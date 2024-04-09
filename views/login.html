@@ -63,46 +63,70 @@
         window.location = "/"
     }
     document.getElementById("Submit").addEventListener("click", () => {
-        const email = document.getElementById("email")
-        const password = document.getElementById("password")
-        const msg_success = document.getElementById("msg_success")
-        const msg_err = document.getElementById("msg_err")
-        const res = fetch("/login", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email: email.value, password: password.value })
-        })
-            .then(res => res.json())
-            .then(dat => {
-                if (dat.status == 404) {
-                    document.getElementsByClassName("wrapper-warning")[0].style.display = "block"
-                    msg_err.innerText = "Простите Логин или Пароль Не Правильные Попробуйте Заново!"
-                    setTimeout(() => {
-                        document.getElementsByClassName("wrapper-warning")[0].classList.remove("animate__backInRight")
-                        document.getElementsByClassName("wrapper-warning")[0].classList.add("animate__backOutRight")
-                        setTimeout(() => {
-                            document.getElementsByClassName("wrapper-warning")[0].style.display = "none"
-                            document.getElementsByClassName("wrapper-warning")[0].classList.add("animate__backInRight")
-                            document.getElementsByClassName("wrapper-warning")[0].classList.remove("animate__backOutRight")
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                let currentDate = new Date();
 
-                        }, 500);
-                    }, 5000);
-                }
-                if (dat.status == 200) {
-                    localStorage.setItem("info", JSON.stringify(dat))
-                    document.getElementsByClassName("wrapper-success")[0].style.display = "block"
-                    msg_success.innerText = `${dat.name} Добро Пожаловать!`
-                    setTimeout(() => {
-                        if (dat.access == true) {
-                            window.location = "/admin"
-                        } else {
-                            window.location = "/"
+                let day = currentDate.getDate();
+                let month = currentDate.getMonth() + 1;
+                let year = currentDate.getFullYear();
+                let hours = currentDate.getHours();
+                let minutes = currentDate.getMinutes();
+                let seconds = currentDate.getSeconds();
+                day = (day < 10) ? '0' + day : day;
+                month = (month < 10) ? '0' + month : month;
+                hours = (hours < 10) ? '0' + hours : hours;
+                minutes = (minutes < 10) ? '0' + minutes : minutes;
+                seconds = (seconds < 10) ? '0' + seconds : seconds;
+                let formattedDate = day + '.' + month + '.' + year;
+                let formattedTime = hours + ':' + minutes + ':' + seconds;
+                const email = document.getElementById("email")
+                const password = document.getElementById("password")
+                const msg_success = document.getElementById("msg_success")
+                const msg_err = document.getElementById("msg_err")
+                const res = fetch("/login", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: email.value, password: password.value, ip: data.ip, date: `${formattedDate} ${formattedTime}` })
+                })
+                    .then(res => res.json())
+                    .then(dat => {
+                        if (dat.status == 404) {
+                            document.getElementsByClassName("wrapper-warning")[0].style.display = "block"
+                            msg_err.innerText = "Простите Логин или Пароль Не Правильные Попробуйте Заново!"
+                            setTimeout(() => {
+                                document.getElementsByClassName("wrapper-warning")[0].classList.remove("animate__backInRight")
+                                document.getElementsByClassName("wrapper-warning")[0].classList.add("animate__backOutRight")
+                                setTimeout(() => {
+                                    document.getElementsByClassName("wrapper-warning")[0].style.display = "none"
+                                    document.getElementsByClassName("wrapper-warning")[0].classList.add("animate__backInRight")
+                                    document.getElementsByClassName("wrapper-warning")[0].classList.remove("animate__backOutRight")
+
+                                }, 500);
+                            }, 5000);
                         }
-                    }, 1000);
-                }
+                        if (dat.status == 200) {
+                            localStorage.setItem("info", JSON.stringify(dat))
+                            document.getElementsByClassName("wrapper-success")[0].style.display = "block"
+                            msg_success.innerText = `${dat.name} Добро Пожаловать!`
+                            setTimeout(() => {
+                                if (dat.access == true) {
+                                    window.location = "/admin"
+                                } else {
+                                    window.location = "/"
+                                }
+                            }, 1000);
+                        }
+                    })
             })
+            .catch(error => {
+                console.error('Произошла ошибка при получении IP-адреса:', error);
+            });
+
+
     })
 </script>
 

@@ -49,7 +49,7 @@
                         <input required type="text" id="email">
                         <h1 class="password_title">Password<span>*</span></h1>
                         <input required type="password" id="password"> <br>
-                        <button onclick="func()" id="Submit">Login</button>
+                        <button id="Submit">Login</button>
                     </div>
                 </div>
                 <div class="sign_in_right"><img src="/images/body_part_1_img.png" alt=""></div>
@@ -62,7 +62,7 @@
     if (localStorage.getItem("info")) {
         window.location = "/"
     }
-    function func() {
+    document.getElementById("Submit").addEventListener("click", () => {
         const email = document.getElementById("email")
         const password = document.getElementById("password")
         const msg_success = document.getElementById("msg_success")
@@ -103,7 +103,7 @@
                     }, 1000);
                 }
             })
-    }
+    })
 </script>
 
 </html>

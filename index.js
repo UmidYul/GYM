@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import { Low } from 'lowdb'
 import { JSONFile } from 'lowdb/node'
 import cron from "node-cron"
+import { SendEmail } from "./email.js"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);

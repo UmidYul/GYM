@@ -146,12 +146,20 @@
 
 .admin_right_panel_content_1 {
     display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    /* width: 100%; */
+}
+
+.admin_right_panel_content_1_left {
+    display: flex;
     flex-direction: column;
     gap: 17px;
 }
 
 .admin_right_panel_content_1_row_1 {
     height: 140px;
+    width: 350px;
 }
 
 .block {
@@ -166,5 +174,9 @@
     display: flex;
     justify-content: space-between;
     gap: 12px;
-    height: 198px;
+    height: 200px;
+}
+
+.admin_right_panel_content_1_row_3 {
+    height: 140px;
 }

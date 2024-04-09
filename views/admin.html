@@ -5,53 +5,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gym</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 
 <body>
+    <div class="section_1">
+        <div class="container">
+            <div class="admin_left_panel">
 
+                <div class="profile_information">
+                    <div class="profile_logo"><img src="/images/profile_person_white.png" alt=""></div>
+                    <div class="profile_name"></div>
+                    <div class="profile_email"></div>
+                </div>
+
+                <div class="profile_navigation">
+                    <ul class="profiole_nav_ul">
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-solid fa-table-columns"></i><span>Dashboard</span></a></li>
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-solid fa-user-tie"></i><span>Admin Profile</span></a></li>
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-solid fa-address-card"></i><span>Registration</span></a></li>
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-regular fa-clipboard"></i><span>Plan</span></a></li>
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-solid fa-money-check-dollar"></i><span>Payment</span></a></li>
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-solid fa-user-group"></i><span>View Members</span></a></li>
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-solid fa-dumbbell"></i><span>Coaches</span></a></li>
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-solid fa-book-bookmark"></i><span>Report</span></a></li>
+                    </ul>
+                </div>
+
+                <a href="#" class="profile_log_out"><i class="fa-solid fa-arrow-right-from-bracket"></i><span>Log
+                        out</span></a>
+            </div>
+
+            <div class="admin_right_panel">
+                <div class="row">
+                    <div class="admin_right_panel_header">
+                        <div class="admin_right_panel_header_logo"><img src="/images/logoclient.png" alt=""></div>
+                        <div class="admin_right_panel_header_feedback"><span>Feedback</span><i
+                                class="fa-solid fa-bell"></i></div>
+                    </div>
+                    <div class="admin_right_panel_content">
+                        <div class="admin_right_panel_content_1">
+                            <div class="admin_right_panel_content_1_row_1">
+                                <div class="admin_panel_content_1_block_1 block"></div>
+                            </div>
+                            <div class="admin_right_panel_content_1_row_2">
+                                <div class="admin_panel_content_1_block_2 block"></div>
+                                <div class="admin_panel_content_1_block_3 block"></div>
+                            </div>
+                            <div class="admin_right_panel_content_1_row_3">
+                                <h1 class="admin_right_panel_content_1_row_3_title">Active Members</h1>
+                                <div class="admin_panel_content_1_block_4 block"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 <script>
     if (JSON.parse(localStorage.getItem("info")).id != 1234567890123) {
         window.location = "/"
     }
-    const res = fetch("/getPlans", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ status: 200 })
-    })
-        .then(res => res.json())
-        .then(dat => {
-            document.getElementById("planSelect").innerHTML += dat.obj.map(i => `
-        <option value="${i.name}">${i.name}</option>
-        `)
-        })
-
-    function planFunc(value) {
-        const response = fetch("/price", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ plan: value })
-        })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("priceInput").value = data.text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-                document.getElementById('registerForm').addEventListener('submit', function (event) {
-                    event.preventDefault();
-                    document.getElementById('hiddenPriceInput').style.display = 'none';
-                    document.getElementById('hiddenValidityInput').style.display = 'none';
-                    document.getElementById('hiddenPriceInput').value = document.getElementById('priceInput').value.replace(/\s/g, '');
-                    document.getElementById('hiddenValidityInput').value = data.validity
-                    document.getElementById('hiddenPriceInput').style.display = 'block';
-                    document.getElementById('hiddenValidityInput').style.display = 'block';
-                    this.submit()
-                });
-            })
+    window.onload = () => {
+        const info = JSON.parse(localStorage.getItem("info"))
+        document.getElementsByClassName("profile_name")[0].textContent = info.name
+        document.getElementsByClassName("profile_email")[0].textContent = info.email
     }
+
+
+    // const res = fetch("/getPlans", {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({ status: 200 })
+    // })
+    //     .then(res => res.json())
+    //     .then(dat => {
+    //         document.getElementById("planSelect").innerHTML += dat.obj.map(i => `
+    //     <option value="${i.name}">${i.name}</option>
+    //     `)
+    //     })
+
+    // function planFunc(value) {
+    //     const response = fetch("/price", {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify({ plan: value })
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             document.getElementById("priceInput").value = data.text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    //             document.getElementById('registerForm').addEventListener('submit', function (event) {
+    //                 event.preventDefault();
+    //                 document.getElementById('hiddenPriceInput').style.display = 'none';
+    //                 document.getElementById('hiddenValidityInput').style.display = 'none';
+    //                 document.getElementById('hiddenPriceInput').value = document.getElementById('priceInput').value.replace(/\s/g, '');
+    //                 document.getElementById('hiddenValidityInput').value = data.validity
+    //                 document.getElementById('hiddenPriceInput').style.display = 'block';
+    //                 document.getElementById('hiddenValidityInput').style.display = 'block';
+    //                 this.submit()
+    //             });
+    //         })
+    // }
 </script>
 
 </html>

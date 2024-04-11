@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const file = join(__dirname, 'db.json')
 const adapter = new JSONFile(file)
-const defaultData = { admin: [], members: [], plans: [] }
+const defaultData = { admin: [], members: [], plans: [], coaches: [] }
 const db = new Low(adapter, defaultData)
 const app = express()
 const port = 3000
@@ -266,7 +266,11 @@ app.post("/getPlans", async (req, res) => {
     const { plans } = db.data
     res.send(JSON.stringify({ obj: plans }))
 })
-
+app.post("/getUsers", async (req, res) => {
+    await db.read()
+    const { members } = db.data
+    res.send(JSON.stringify({ members }))
+})
 cron.schedule('0 0 * * *', async () => {
     SendEmail("yumid253@gmail.com", "Time Test №1", `Test 1`)
     await db.read()

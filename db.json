@@ -1,10 +1,10 @@
 {
   "admin": {
     "id": 1234567890123,
-    "name": "Jhon Doe",
-    "email": "yumid257@gmail.com",
+    "name": "Zerox",
+    "email": "333zeroxyt@gmail.com",
     "password": "1234",
-    "phone": "+998905329686"
+    "phone": "+998973355774"
   },
   "members": [
     {
@@ -30,9 +30,9 @@
       "name": "Shohrux",
       "email": "member2",
       "password": "1234",
-      "phone": "+998906666666",
+      "phone": "+998973355774",
       "dateofjoin": "2024-01-01",
-      "status": "Active",
+      "status": "Expire",
       "payments": [
         {
           "plan": "3 month",
@@ -67,5 +67,6 @@
       "validity": 6,
       "price": 100000
     }
-  ]
+  ],
+  "coaches": []
 }

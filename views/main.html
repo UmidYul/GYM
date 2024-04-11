@@ -214,10 +214,27 @@
 
 </body>
 <script>
+    if (localStorage.getItem("info")) {
+        const response = fetch("/checkUpdates", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ data: localStorage.getItem("info") })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data == 404) {
+                    localStorage.clear()
+                    window.location = "/"
+                }
+            })
+    }
     window.onload = () => {
         const info = JSON.parse(localStorage.getItem("info"))
-        if (info.access != true) {
-            document.getElementsByClassName("profile_date_right")[0].innerHTML = `
+        if (info) {
+            if (info.access != true) {
+                document.getElementsByClassName("profile_date_right")[0].innerHTML = `
 <span class="profile_date_left_text">${info.info.name}</span>
 <span class="profile_date_left_text">${info.info.phone}</span>
 <span class="profile_date_left_text">${info.info.email}</span>
@@ -225,6 +242,7 @@
 <span class="profile_date_left_text">${info.info.payments[info.info.payments.length - 1].expire_date}</span>
 <span class="profile_date_left_text">${info.info.status === "Active" ? "Активный" : "Истёк"}</span >
         `
+            }
         }
     }
     function signOut() {

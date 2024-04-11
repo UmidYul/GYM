@@ -36,13 +36,14 @@ app.post("/login", async (req, res) => {
     if (email == admin.email) {
         if (password == admin.password) {
             res.send(JSON.stringify({
-                status: 200,
                 id: admin.id,
                 name: admin.name,
                 email: admin.email,
-                phone: admin.phone,
                 password: admin.password,
-                access: true
+                phone: admin.phone,
+                access: true,
+                status: 200
+
             }))
             SendEmail(admin.email, "Уведомление о входе в аккаунт!", `
                     Здравствуйте ${admin.name},
@@ -293,13 +294,13 @@ app.post("/edit-admin-data", async (req, res) => {
     admin.email = email
     db.write()
     res.send(JSON.stringify({
-        status: 200,
         id: admin.id,
         name: admin.name,
         email: admin.email,
-        phone: admin.phone,
         password: admin.password,
-        access: true
+        phone: admin.phone,
+        access: true, status: 200
+
     }))
 })
 app.post("/reset-admin-password", async (req, res) => {
@@ -309,15 +310,52 @@ app.post("/reset-admin-password", async (req, res) => {
     admin.password = password
     db.write()
     res.send(JSON.stringify({
-        status: 200,
         id: admin.id,
         name: admin.name,
         email: admin.email,
-        phone: admin.phone,
         password: admin.password,
-        access: true
+        phone: admin.phone,
+        access: true,
+        status: 200
     }))
 })
+
+app.post("/checkUpdates", async (req, res) => {
+    let { data } = req.body
+    await db.read()
+    data = JSON.parse(data)
+    const { admin, members } = db.data
+    if (admin.id == data.id && admin.name == data.name && admin.email == data.email && admin.password == data.password && admin.phone == data.phone) {
+        res.send(JSON.stringify(200))
+    } else {
+        if (data.dateofjoin) {
+            let isAdmin = false;
+            for (let i = 0; i < members.length; i++) {
+                const member = members[i];
+                if (member.id == data.info.id &&
+                    member.name == data.info.name &&
+                    member.email == data.info.email &&
+                    member.password == data.info.password &&
+                    member.phone == data.info.phone &&
+                    member.dateofjoin == data.info.dateofjoin &&
+                    member.status == data.info.status &&
+                    member.payments.length == data.info.payments.length) {
+                    isAdmin = true;
+                    break;
+                }
+            }
+
+            if (isAdmin) {
+                res.send(JSON.stringify(200));
+            } else {
+                res.send(JSON.stringify(404));
+            }
+        } else {
+            res.send(JSON.stringify(404));
+        }
+    }
+})
+
 cron.schedule('0 0 * * *', async () => {
     SendEmail("yumid253@gmail.com", "Time Test №1", `Test 1`)
     await db.read()

@@ -1,3 +1,5 @@
+const info = JSON.parse(localStorage.getItem("info"))
+
 document.getElementsByClassName("card_info")[0].innerHTML = `
 <div class="card_info_row"><span>Username: </span><span>${info.name}</span></div>
 <div class="card_info_row"><span>Phone :
@@ -25,7 +27,7 @@ function changeForm() {
         .then(dat => {
             localStorage.clear()
             localStorage.setItem("info", JSON.stringify(dat))
-            window.location = "/admin"
+            window.location = "/admin#profile"
         })
 }
 function resetPass() {
@@ -47,7 +49,7 @@ function resetPass() {
                 .then(dat => {
                     localStorage.clear()
                     localStorage.setItem("info", JSON.stringify(dat))
-                    window.location = "/admin"
+                    window.location = "/admin#profile"
                 })
         } else {
             console.log("new isnt equal");

@@ -676,7 +676,13 @@
 .column {
     display: flex;
     flex-direction: column;
-    gap: 17px;
+    gap: 25px;
+}
+
+.column_btn {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .arpc_4_block_column_title {
@@ -687,5 +693,33 @@
 
 .arpc_4_block_column_text {
     font-size: 14px;
+    color: #fff;
+}
+
+.search_system input {
+    width: 150px;
+    height: 30px;
+    border-radius: 12px;
+    background-color: #5D57A3;
+    border: none;
+    padding-left: 10px;
+    color: #fff;
+}
+
+.search_system input::placeholder {
+    color: #b5b5b5;
+}
+
+.arpc_4_block_column_btn {
+    color: #2B2B2B;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 5px 20px;
+    border: 1px solid #fff;
+    transition: 0.4s;
+}
+
+.arpc_4_block_column_btn:hover {
+    background-color: transparent;
     color: #fff;
 }

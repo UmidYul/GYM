@@ -1,4 +1,3 @@
-console.log(200);
 setTimeout(() => {
     const info = JSON.parse(localStorage.getItem("info"))
     document.getElementsByClassName("profile_name")[0].textContent = info.name

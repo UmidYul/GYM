@@ -96,7 +96,9 @@
                             </form>
                             <div class="arpc_4_block">
                                 <div class="search_system">
-                                    <input type="text">
+                                    <div class="arpc_4_block_row">
+                                        <input type="text" placeholder="Search">
+                                    </div>
                                 </div>
                                 <div class="arpc_4_block_row">
                                     <div class="arpc_4_block_column_name column">
@@ -117,7 +119,7 @@
                                         <span class="arpc_4_block_column_text">2200</span>
                                         <span class="arpc_4_block_column_text">3800</span>
                                     </div>
-                                    <div class="arpc_4_block_column_edit column">
+                                    <div class="arpc_4_block_column_edit column_btn">
                                         <span class="arpc_4_block_column_title">Edit</span>
                                         <span class="arpc_4_block_column_text"><button
                                                 class="arpc_4_block_column_btn">Edit</button></span>
@@ -135,197 +137,196 @@
         </div>
     </div>
 </body>
-<script id="myScript" src="/admin/dashboard.js"></script>
 
 <script>
-    if (JSON.parse(localStorage.getItem("info")).id != 1234567890123) {
+    if (JSON.parse(localStorage.getItem("info")).id != "5be7e2d39a6e4") {
         window.location = "/"
     }
 
-    //     window.addEventListener('hashchange', function () {
-    //         var page = window.location.hash.substring(1);
-    //         loadContent(page);
-    //     });
+    window.addEventListener('hashchange', function () {
+        var page = window.location.hash.substring(1);
+        loadContent(page);
+    });
 
 
-    //     function loadContent(page) {
-    //         var content = pages[page];
-    //         document.getElementsByClassName('admin_right_panel_content')[0].innerHTML = content;
+    function loadContent(page) {
+        var content = pages[page];
+        document.getElementsByClassName('admin_right_panel_content')[0].innerHTML = content;
 
-    //         // Создаем новый элемент скрипта
-    //         var script = document.createElement("script");
-    //         script.src = `/admin/${page}.js`;
-    //         // Удаляем старый скрипт, если он существует
-    //         var oldScript = document.getElementById("myScript");
-    //         if (oldScript) {
-    //             oldScript.parentNode.removeChild(oldScript);
-    //         }
-    //         // Добавляем новый скрипт в конец тела документа
-    //         document.body.appendChild(script);
+        // Создаем новый элемент скрипта
+        var script = document.createElement("script");
+        script.src = `/admin/${page}.js`;
+        // Удаляем старый скрипт, если он существует
+        var oldScript = document.getElementById("myScript");
+        if (oldScript) {
+            oldScript.parentNode.removeChild(oldScript);
+        }
+        // Добавляем новый скрипт в конец тела документа
+        document.body.appendChild(script);
 
-    //         document.getElementsByClassName("activePanelBtn")[0].classList.remove("activePanelBtn");
-    //         document.getElementById(page).classList.add("activePanelBtn");
-    //     }
+        document.getElementsByClassName("activePanelBtn")[0].classList.remove("activePanelBtn");
+        document.getElementById(page).classList.add("activePanelBtn");
+    }
 
-    //     var pages = {
-    //         dashboard: ` <div class="arpc_1">
-    //                             <div class="arpc_1_left">
-    //                                 <div class="arpc_1_row_1">
-    //                                     <div class="arpc_1_row_1_block_1 block">
-    //                                         <div class="arpc_1_row_1_block_1_left_side">
-    //                                             <div class="arpc_1_row_1_block_1_left_side_title">Welcome
-    //                                                 <span>Admin</span>
-    //                                             </div>
-    //                                             <div class="arpc_1_row_1_block_1_left_side_text">Добро пожаловать в
-    //                                                 административную панель! Здесь вы можете управлять контентом,
-    //                                                 настройками и многим другим. Приятной работы!</div>
-    //                                         </div>
-    //                                         <div class="arpc_1_row_1_block_1_right_side">
-    //                                             <div class="arpc_1_row_1_block_1_right_side_circle"></div>
-    //                                         </div>
-    //                                     </div>
-    //                                 </div>
-    //                                 <div class="arpc_1_row_2">
-    //                                     <div class="arpc_1_row_2_block_2 block">
-    //                                         <div class="block_2_row">
-    //                                             <div class="arpc_1_row_2_block_2_header">
-    //                                                 <div class="arpc_1_row_2_block_2_header_title">Coaches</div>
-    //                                                 <!-- <div class="arpc_1_row_2_block_2_header_dot"><i
-    //                                                         class="fa-solid fa-ellipsis-vertical"></i></div> -->
-    //                                             </div>
-    //                                             <div class="arpc_1_row_2_block_2_list">
-    //                                                 <div class="arpc_1_row_2_block_2_list_row">
-    //                                                     <div class="arpc_1_row_2_block_2_list_row_circle"></div>
-    //                                                     <div class="arpc_1_row_2_block_2_list_row_name">Juan Dela Cruz</div>
-    //                                                 </div>
-    //                                                 <div class="arpc_1_row_2_block_2_list_row">
-    //                                                     <div class="arpc_1_row_2_block_2_list_row_circle"></div>
-    //                                                     <div class="arpc_1_row_2_block_2_list_row_name">Juan Dela Cruz</div>
-    //                                                 </div>
-    //                                             </div>
-    //                                         </div>
-    //                                     </div>
-    //                                     <div class="arpc_1_row_3_block_3 block">
-    //                                         <div class="block_2_row">
-    //                                             <div class="arpc_1_row_2_block_2_header">
-    //                                                 <div class="arpc_1_row_2_block_2_header_title">Активных</div>
-    //                                                 <!-- <div class="arpc_1_row_2_block_2_header_dot"><i
-    //                                                         class="fa-solid fa-ellipsis-vertical"></i></div> -->
-    //                                             </div>
-    //                                             <div class="arpc_1_row_2_block_2_percentage">0%</div>
-    //                                         </div>
-    //                                     </div>
-    //                                 </div>
-    //                             </div>
-    //                             <div class="arpc_1_right">
-    //                                 <div class="arpc_1_row_3">
-    //                                     <div class="arpc_1_row_3_title">Active Members</div>
-    //                                     <div class="arpc_1_row_1_block_4 block">
-    //                                         <div class="block_4_row">
-    //                                             <div class="arpc_1_row_1_block_4_header">
-    //                                                 <div class="arpc_1_row_1_block_4_search_block">
-    //                                                     <input type="text" id="searchInput" placeholder="Search">
-    //                                                 </div>
-    //                                                 <div class="arpc_1_row_1_block_4_sort_filter">
-    //                                                     <span>Sort by</span>
-    //                                                     <i class="fa-solid fa-arrow-up-wide-short"></i>
-    //                                                 </div>
-    //                                             </div>
+    var pages = {
+        dashboard: ` <div class="arpc_1">
+                                <div class="arpc_1_left">
+                                    <div class="arpc_1_row_1">
+                                        <div class="arpc_1_row_1_block_1 block">
+                                            <div class="arpc_1_row_1_block_1_left_side">
+                                                <div class="arpc_1_row_1_block_1_left_side_title">Welcome
+                                                    <span>Admin</span>
+                                                </div>
+                                                <div class="arpc_1_row_1_block_1_left_side_text">Добро пожаловать в
+                                                    административную панель! Здесь вы можете управлять контентом,
+                                                    настройками и многим другим. Приятной работы!</div>
+                                            </div>
+                                            <div class="arpc_1_row_1_block_1_right_side">
+                                                <div class="arpc_1_row_1_block_1_right_side_circle"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="arpc_1_row_2">
+                                        <div class="arpc_1_row_2_block_2 block">
+                                            <div class="block_2_row">
+                                                <div class="arpc_1_row_2_block_2_header">
+                                                    <div class="arpc_1_row_2_block_2_header_title">Coaches</div>
+                                                    <!-- <div class="arpc_1_row_2_block_2_header_dot"><i
+                                                            class="fa-solid fa-ellipsis-vertical"></i></div> -->
+                                                </div>
+                                                <div class="arpc_1_row_2_block_2_list">
+                                                    <div class="arpc_1_row_2_block_2_list_row">
+                                                        <div class="arpc_1_row_2_block_2_list_row_circle"></div>
+                                                        <div class="arpc_1_row_2_block_2_list_row_name">Juan Dela Cruz</div>
+                                                    </div>
+                                                    <div class="arpc_1_row_2_block_2_list_row">
+                                                        <div class="arpc_1_row_2_block_2_list_row_circle"></div>
+                                                        <div class="arpc_1_row_2_block_2_list_row_name">Juan Dela Cruz</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="arpc_1_row_3_block_3 block">
+                                            <div class="block_2_row">
+                                                <div class="arpc_1_row_2_block_2_header">
+                                                    <div class="arpc_1_row_2_block_2_header_title">Активных</div>
+                                                    <!-- <div class="arpc_1_row_2_block_2_header_dot"><i
+                                                            class="fa-solid fa-ellipsis-vertical"></i></div> -->
+                                                </div>
+                                                <div class="arpc_1_row_2_block_2_percentage">0%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="arpc_1_right">
+                                    <div class="arpc_1_row_3">
+                                        <div class="arpc_1_row_3_title">Active Members</div>
+                                        <div class="arpc_1_row_1_block_4 block">
+                                            <div class="block_4_row">
+                                                <div class="arpc_1_row_1_block_4_header">
+                                                    <div class="arpc_1_row_1_block_4_search_block">
+                                                        <input type="text" id="searchInput" placeholder="Search">
+                                                    </div>
+                                                    <div class="arpc_1_row_1_block_4_sort_filter">
+                                                        <span>Sort by</span>
+                                                        <i class="fa-solid fa-arrow-up-wide-short"></i>
+                                                    </div>
+                                                </div>
 
-    //                                             <div class="arpc_1_row_3_block_4_list">
-    //                                                 <div class="arpc_1_row_3_block_4_list_name">
-    //                                                     <div class="arpc_1_row_3_block_4_list_name_row">
-    //                                                         <div class="arpc_1_row_3_block_4_list_name_row_name">&nbsp;
-    //                                                         </div>
-    //                                                     </div>
+                                                <div class="arpc_1_row_3_block_4_list">
+                                                    <div class="arpc_1_row_3_block_4_list_name">
+                                                        <div class="arpc_1_row_3_block_4_list_name_row">
+                                                            <div class="arpc_1_row_3_block_4_list_name_row_name">&nbsp;
+                                                            </div>
+                                                        </div>
 
-    //                                                 </div>
-    //                                                 <div class="arpc_1_row_3_block_4_list_date">
-    //                                                     <div class="arpc_1_row_3_block_4_list_date_table">
-    //                                                         <div class="table_header">
-    //                                                             <div class="arpc_1_row_3_block_4_list_date_table_paid">Date
-    //                                                                 paid</div>
-    //                                                             <div class="arpc_1_row_3_block_4_list_date_table_expiry">
-    //                                                                 Date Expiry</div>
-    //                                                             <div class="arpc_1_row_3_block_4_list_date_table_status">
-    //                                                                 Status</div>
-    //                                                         </div>
-    //                                                         <div class="table_dates">
+                                                    </div>
+                                                    <div class="arpc_1_row_3_block_4_list_date">
+                                                        <div class="arpc_1_row_3_block_4_list_date_table">
+                                                            <div class="table_header">
+                                                                <div class="arpc_1_row_3_block_4_list_date_table_paid">Date
+                                                                    paid</div>
+                                                                <div class="arpc_1_row_3_block_4_list_date_table_expiry">
+                                                                    Date Expiry</div>
+                                                                <div class="arpc_1_row_3_block_4_list_date_table_status">
+                                                                    Status</div>
+                                                            </div>
+                                                            <div class="table_dates">
 
-    //                                                         </div>
-    //                                                     </div>
-    //                                                 </div>
-    //                                             </div>
-    //                                         </div>
-    //                                     </div>
-    //                                 </div>
-    //                             </div>
-    //                         </div>
-    // `,
-    //         profile: ` <div class="arpc_2">
-    //     <div class="arpc_2_left">
-    //         <div class="arpc_2_left_card card">
-    //             <div class="card_row">
-    //                 <div class="card_logo">
-    //                     <div class="card_img"><img src="/images/profile_person.png" alt=""></div>
-    //                 </div>
-    //                 <div class="card_info">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    `,
+        profile: ` <div class="arpc_2">
+        <div class="arpc_2_left">
+            <div class="arpc_2_left_card card">
+                <div class="card_row">
+                    <div class="card_logo">
+                        <div class="card_img"><img src="/images/profile_person.png" alt=""></div>
+                    </div>
+                    <div class="card_info">
 
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </div>
-    //     <div class="arpc_2_right">
-    //         <div class="arpc_2_right_user_info card">
-    //             <div class="card_row">
-    //                 <div action="/edit-admin-data" method="post" class="arpc_2_right_user_info_form">
-    //                     <h1 class="arpc_2_right_user_info_username h1_text">Username</h1>
-    //                     <input type="text" id="changeName" name="name">
-    //                     <h1 class="arpc_2_right_user_info_contact h1_text">Phone</h1>
-    //                     <input type="number" id="changePhone" name="phone">
-    //                     <h1 class="arpc_2_right_user_info_email h1_text">Email Address</h1>
-    //                     <input type="email" id="changeEmail" name="email">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="arpc_2_right">
+            <div class="arpc_2_right_user_info card">
+                <div class="card_row">
+                    <div action="/edit-admin-data" method="post" class="arpc_2_right_user_info_form">
+                        <h1 class="arpc_2_right_user_info_username h1_text">Username</h1>
+                        <input type="text" id="changeName" name="name">
+                        <h1 class="arpc_2_right_user_info_contact h1_text">Phone</h1>
+                        <input type="number" id="changePhone" name="phone">
+                        <h1 class="arpc_2_right_user_info_email h1_text">Email Address</h1>
+                        <input type="email" id="changeEmail" name="email">
 
-    //                     <div class="form_buttons">
-    //                         <button onclick="changeForm()" class="form_button_save btn">Save</button>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //         <div class="arpc_2_right_password card">
-    //             <div class="card_row">
-    //                 <div action="/reset-admin-password" class="arpc_2_right_password_form">
-    //                     <div class="arpc_2_right_password_form_title">
-    //                         <h1 class="arpc_2_right_password_form h1_text">Current Password</h1>
-    //                         <p class="wrong">Current password is wrong</p>
-    //                     </div>
-    //                     <input type="text" id="CurrentPass">
-    //                     <h1 class="arpc_2_right_password_form h1_text">New Password</h1>
-    //                     <input type="text" id="NewPass" name="password">
-    //                     <h1 class="arpc_2_right_password_form h1_text">Re-type Password</h1>
-    //                     <input type="text" id="repeatNewPass">
+                        <div class="form_buttons">
+                            <button onclick="changeForm()" class="form_button_save btn">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="arpc_2_right_password card">
+                <div class="card_row">
+                    <div action="/reset-admin-password" class="arpc_2_right_password_form">
+                        <div class="arpc_2_right_password_form_title">
+                            <h1 class="arpc_2_right_password_form h1_text">Current Password</h1>
+                            <p class="wrong">Current password is wrong</p>
+                        </div>
+                        <input type="text" id="CurrentPass">
+                        <h1 class="arpc_2_right_password_form h1_text">New Password</h1>
+                        <input type="text" id="NewPass" name="password">
+                        <h1 class="arpc_2_right_password_form h1_text">Re-type Password</h1>
+                        <input type="text" id="repeatNewPass">
 
-    //                     <div class="form_buttons">
-    //                         <button onclick="resetPass()" class="form_button_save btn">Change</button>
-    //                         <button onclick="resetPassInputs()" class="form_button_cancel btn">Clear</button>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </div>
-    // </div>`,
-    //         settings: `<h2>Settings</h2>
-    // <p>Содержимое страницы Settings...</p>`
-    //     };
-    //     window.addEventListener('load', function () {
-    //         var page = window.location.hash.substring(1);
-    //         if (page === "") {
-    //             loadContent("dashboard");
+                        <div class="form_buttons">
+                            <button onclick="resetPass()" class="form_button_save btn">Change</button>
+                            <button onclick="resetPassInputs()" class="form_button_cancel btn">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`,
+        settings: `<h2>Settings</h2>
+    <p>Содержимое страницы Settings...</p>`
+    };
+    window.addEventListener('load', function () {
+        var page = window.location.hash.substring(1);
+        if (page === "") {
+            loadContent("dashboard");
 
-    //         } else {
-    //             loadContent(page);
-    //         }
-    //     });
+        } else {
+            loadContent(page);
+        }
+    });
 
 
     function signOut() {

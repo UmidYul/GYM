@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="section_1">
+        <div class="container">
+            <div class="admin_left_panel">
+
+                <div class="profile_information">
+                    <div class="profile_logo"><img src="/images/profile_person_white.png" alt=""></div>
+                    <div class="profile_name">Administrator Name</div>
+                    <div class="profile_email">juan.delacruz@gmail.com</div>
+                </div>
+
+                <div class="profile_navigation">
+                    <ul class="profiole_nav_ul">
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-solid fa-table-columns"></i><span>Dashboard</span></a></li>
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-solid fa-user-tie"></i><span>Admin Profile</span></a></li>
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-solid fa-address-card"></i><span>Registration</span></a></li>
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-regular fa-clipboard"></i><span>Plan</span></a></li>
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-solid fa-money-check-dollar"></i><span>Payment</span></a></li>
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-solid fa-user-group"></i><span>View Members</span></a></li>
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-solid fa-dumbbell"></i><span>Coaches</span></a></li>
+                        <li class="profile_nav_li"><a href="#" class="profile_nav_a"><i
+                                    class="fa-solid fa-book-bookmark"></i><span>Report</span></a></li>
+                    </ul>
+                </div>
+
+                <a style="cursor: pointer;" onclick="signOut()" class="profile_log_out"><i
+                        class="fa-solid fa-arrow-right-from-bracket"></i><span>Log
+                        out</span></a>
+            </div>
+
+            <div class="admin_right_panel">
+                <div class="row">
+                    <div class="admin_right_panel_header">
+                        <div class="admin_right_panel_header_logo"><img src="/images/logoclient.png" alt=""></div>
+                        <div class="admin_right_panel_header_feedback"><span>Feedback</span><i
+                                class="fa-solid fa-bell"></i></div>
+                    </div>
+                    <div class="admin_right_panel_content">
+                        <!-- arpc - admin right panel content -->
+                        <!-- HERE -->
+                        <div class="arpc_1 ">
+                            <div class="arpc_1_left">
+                                <div class="arpc_1_row_1">
+                                    <div class="arpc_1_row_1_block_1 block">
+                                        <div class="arpc_1_row_1_block_1_left_side">
+                                            <div class="arpc_1_row_1_block_1_left_side_title">Welcome
+                                                <span>Admin</span>
+                                            </div>
+                                            <div class="arpc_1_row_1_block_1_left_side_text">Добро пожаловать в
+                                                административную панель! Здесь вы можете управлять контентом,
+                                                настройками и многим другим. Приятной работы!</div>
+                                        </div>
+                                        <div class="arpc_1_row_1_block_1_right_side">
+                                            <div class="arpc_1_row_1_block_1_right_side_circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="arpc_1_row_2">
+                                    <div class="arpc_1_row_2_block_2 block">
+                                        <div class="block_2_row">
+                                            <div class="arpc_1_row_2_block_2_header">
+                                                <div class="arpc_1_row_2_block_2_header_title">Coaches</div>
+                                                <!-- <div class="arpc_1_row_2_block_2_header_dot"><i
+                                                        class="fa-solid fa-ellipsis-vertical"></i></div> -->
+                                            </div>
+                                            <div class="arpc_1_row_2_block_2_list">
+                                                <div class="arpc_1_row_2_block_2_list_row">
+                                                    <div class="arpc_1_row_2_block_2_list_row_circle"></div>
+                                                    <div class="arpc_1_row_2_block_2_list_row_name">Juan Dela Cruz</div>
+                                                </div>
+                                                <div class="arpc_1_row_2_block_2_list_row">
+                                                    <div class="arpc_1_row_2_block_2_list_row_circle"></div>
+                                                    <div class="arpc_1_row_2_block_2_list_row_name">Juan Dela Cruz</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="arpc_1_row_3_block_3 block">
+                                        <div class="block_2_row">
+                                            <div class="arpc_1_row_2_block_2_header">
+                                                <div class="arpc_1_row_2_block_2_header_title">Активных</div>
+                                                <!-- <div class="arpc_1_row_2_block_2_header_dot"><i
+                                                        class="fa-solid fa-ellipsis-vertical"></i></div> -->
+                                            </div>
+                                            <div class="arpc_1_row_2_block_2_percentage">0%</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="arpc_1_right">
+                                <div class="arpc_1_row_3">
+                                    <div class="arpc_1_row_3_title">Active Members</div>
+                                    <div class="arpc_1_row_1_block_4 block">
+                                        <div class="block_4_row">
+                                            <div class="arpc_1_row_1_block_4_header">
+                                                <div class="arpc_1_row_1_block_4_search_block">
+                                                    <input type="text" id="searchInput" placeholder="Search">
+                                                </div>
+                                                <div class="arpc_1_row_1_block_4_sort_filter">
+                                                    <span>Sort by</span>
+                                                    <i class="fa-solid fa-arrow-up-wide-short"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="arpc_1_row_3_block_4_list">
+                                                <div class="arpc_1_row_3_block_4_list_name">
+                                                    <div class="arpc_1_row_3_block_4_list_name_row">
+                                                        <div class="arpc_1_row_3_block_4_list_name_row_name">&nbsp;
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="arpc_1_row_3_block_4_list_date">
+                                                    <div class="arpc_1_row_3_block_4_list_date_table">
+                                                        <div class="table_header">
+                                                            <div class="arpc_1_row_3_block_4_list_date_table_paid1">ID
+                                                            </div>
+                                                            <div class="arpc_1_row_3_block_4_list_date_table_paid">Date
+                                                                paid</div>
+                                                            <div class="arpc_1_row_3_block_4_list_date_table_expiry">
+                                                                Date Expiry</div>
+                                                            <div class="arpc_1_row_3_block_4_list_date_table_status">
+                                                                Status</div>
+                                                        </div>
+                                                        <div class="table_dates">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- HERE -->
+                        <div class="arpc_2 not_active">
+                            <div class="arpc_2_left">
+                                <div class="arpc_2_left_card card">
+                                    <div class="card_row">
+                                        <div class="card_logo">
+                                            <div class="card_img"><img src="/images/profile_person.png" alt=""></div>
+                                        </div>
+                                        <div class="card_info">
+                                            <div class="card_info_row"><span>Username: </span><span>Zerox</span></div>
+                                            <div class="card_info_row"><span>Contact No. :
+                                                </span><span>+998973355774</span></div>
+                                            <div class="card_info_row"><span>Email Address:
+                                                </span><span>333zeroxyt</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="arpc_2_right">
+                                <div class="arpc_2_right_user_info card">
+                                    <div class="card_row">
+                                        <form action="" class="arpc_2_right_user_info_form">
+                                            <h1 class="arpc_2_right_user_info_username h1_text">Username</h1>
+                                            <input type="text">
+                                            <h1 class="arpc_2_right_user_info_contact h1_text">Contact</h1>
+                                            <input type="number">
+                                            <h1 class="arpc_2_right_user_info_email h1_text">Email Address</h1>
+                                            <input type="email">
+
+                                            <div class="form_buttons">
+                                                <button class="form_button_save btn">Save</button>
+                                                <button class="form_button_cancel btn">Cancel</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="arpc_2_right_password card">
+                                    <div class="card_row">
+                                        <form action="" class="arpc_2_right_password_form">
+                                            <h1 class="arpc_2_right_password_form h1_text">Current Password</h1>
+                                            <input type="text">
+                                            <h1 class="arpc_2_right_password_form h1_text">New Password</h1>
+                                            <input type="number">
+                                            <h1 class="arpc_2_right_password_form h1_text">Re-type Password</h1>
+                                            <input type="email">
+
+                                            <div class="form_buttons">
+                                                <button class="form_button_save btn">Change</button>
+                                                <button class="form_button_cancel btn">Clear</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="arpc_3 not_active">
+                            <h1 class="arpc_3_subtitle">Become a Member!</h1>
+                            <h1 class="arpc_3_title">Registered</h1>
+                            <div class="arpc_3_block">
+                                <div class="arpc_3_block_row">
+                                    <h1 class="h1_row">ID: <span>1712418463734</span></h1>
+                                    <h1 class="h1_row">Name: <span>Zerox</span></h1>
+                                    <h1 class="h1_row">Email: <span>333zeroxyt@gmail.com</span></h1>
+                                    <h1 class="h1_row">Password: <span>123456</span></h1>
+                                    <h1 class="h1_row">Plan: <span>1 Month</span></h1>
+                                    <h1 class="h1_row">Price: <span>100 000</span></h1>
+                                    <h1 class="h1_row">Date Of Join: <span>2024.04.11</span></h1>
+                                </div>
+                                <button class="arpc_3_block_btn">OK</button>
+                            </div>
+                        </div>
+
+                        <div class="arpc_4 not_active">
+                            <button class="arpc_4_btn">Add Plan</button>
+                            <div class="arpc_4_form">
+                                <div class="arpc_4_row"></div>
+                            </div>
+                            <div class="arpc_4_block"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    if (JSON.parse(localStorage.getItem("info")).id != 1234567890123) {
+        window.location = "/"
+    }
+    window.onload = () => {
+        const info = JSON.parse(localStorage.getItem("info"))
+        document.getElementsByClassName("profile_name")[0].textContent = info.name
+        document.getElementsByClassName("profile_email")[0].textContent = info.email
+        document.getElementsByClassName("arpc_1_row_1_block_1_left_side_title")[0].innerHTML = `Welcome 
+                                                <span>${info.name}</span>`
+    }
+    function signOut() {
+        localStorage.clear()
+        window.location = "/"
+    }
+
+    // const res = fetch("/getPlans", {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({ status: 200 })
+    // })
+    //     .then(res => res.json())
+    //     .then(dat => {
+    //         document.getElementById("planSelect").innerHTML += dat.obj.map(i => `
+    //     <option value="${i.name}">${i.name}</option>
+    //     `)
+    //     })
+
+    const users = fetch("/getUsers", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ status: 200 })
+    })
+        .then(res => res.json())
+        .then(dat => {
+            const data = dat.members
+
+            document.getElementsByClassName("arpc_1_row_3_block_4_list_name")[0].innerHTML +=
+                dat.members.slice(-5).map(i => `
+    <div class="arpc_1_row_3_block_4_list_name_row">
+        <div class="arpc_1_row_3_block_4_list_name_row_name">${i.name}</div>
+    </div>
+`).join(" ")
+
+
+            document.getElementsByClassName("table_dates")[0].innerHTML +=
+                dat.members.slice(-5).map(i => `
+                <div class="arpc_1_row_3_block_4_list_date_table_dates">
+                    <div class="arpc_1_row_3_block_4_list_date_table_paid">1${i.id}</div>
+                    <div class="arpc_1_row_3_block_4_list_date_table_paid">1${i.payments[i.payments.length - 1].payment_date}</div>
+                    <div class="arpc_1_row_3_block_4_list_date_table_expiry">${i.payments[i.payments.length - 1].expire_date}</div>
+                    <div class="arpc_1_row_3_block_4_list_date_table_status">${i.status}</div>
+                </div>
+            `).join(" ")
+
+
+            function Search() {
+                document.getElementById('searchInput').addEventListener('input', function () {
+                    var found = false;
+                    var searchQuery = this.value.trim(); // Получаем значение из поля ввода
+                    var resultsContainer1 = document.getElementsByClassName("arpc_1_row_3_block_4_list_name")[0]
+                    var resultsContainer2 = document.getElementsByClassName("table_dates")[0]
+                    resultsContainer1.innerHTML = `    <div class="arpc_1_row_3_block_4_list_name_row">
+                                                        <div class="arpc_1_row_3_block_4_list_name_row_name">&nbsp;
+                                                        </div>
+                                                    </div>`;
+                    resultsContainer2.innerHTML = '';
+                    var count = 0;
+                    data.forEach(function (user) {
+                        if (count < 5 && String(user.id).startsWith(searchQuery)) {
+                            resultsContainer1.innerHTML += `
+            <div class="arpc_1_row_3_block_4_list_name_row">
+                <div class="arpc_1_row_3_block_4_list_name_row_name">${user.name}</div>
+            </div>
+        `;
+                            resultsContainer2.innerHTML += `
+            <div class="arpc_1_row_3_block_4_list_date_table_dates">
+                <div class="arpc_1_row_3_block_4_list_date_table_paid">${user.payments[user.payments.length - 1].payment_date}</div>
+                <div class="arpc_1_row_3_block_4_list_date_table_expiry">${user.payments[user.payments.length - 1].expire_date}</div>
+                <div class="arpc_1_row_3_block_4_list_date_table_status">${user.status}</div>
+            </div>
+        `;
+                            count++;
+                            found = true;
+                        }
+                    });
+                    if (!found) {
+                        setTimeout(() => {
+                            resultsContainer2.innerHTML += `
+                            <div class="arpc_1_row_3_block_4_list_date_table_dates">
+                                <div class="arpc_1_row_3_block_4_list_date_table_paid">Пользователь Не Найден!</div>
+                            </div>
+                            `
+                        }, 100);
+                    }
+                });
+            }
+
+            function statistic() {
+                const perDiv = document.getElementsByClassName("arpc_1_row_2_block_2_percentage")[0]
+                var totalUsers = data.length;
+                var activeUsers = data.filter(function (user) {
+                    return user.status === 'Active';
+                }).length;
+                var activeUsersPercentage = Math.round((activeUsers / totalUsers) * 100);
+                perDiv.textContent = activeUsersPercentage + "%"
+            }
+            Search()
+            statistic()
+        })
+
+    function planFunc(value) {
+        const response = fetch("/price", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ plan: value })
+        })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("priceInput").value = data.text.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+                document.getElementById('registerForm').addEventListener('submit', function (event) {
+                    event.preventDefault();
+                    document.getElementById('hiddenPriceInput').style.display = 'none';
+                    document.getElementById('hiddenValidityInput').style.display = 'none';
+                    document.getElementById('hiddenPriceInput').value = document.getElementById('priceInput').value.replace(/\s/g, '');
+                    document.getElementById('hiddenValidityInput').value = data.validity
+                    document.getElementById('hiddenPriceInput').style.display = 'block';
+                    document.getElementById('hiddenValidityInput').style.display = 'block';
+                    this.submit()
+                });
+            })
+    }
+</script>
+
+</html>

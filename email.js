@@ -18,17 +18,17 @@ transporter.verify(function (error, success) {
     }
 });
 export function SendEmail(email, subject, text) {
-    // let mailOptions = {
-    //     from: `Stamina Fitness ${mailAddress}`,
-    //     to: email,
-    //     subject: subject,
-    //     text: text
-    // };
+    let mailOptions = {
+        from: `Stamina Fitness ${mailAddress}`,
+        to: email,
+        subject: subject,
+        text: text
+    };
 
-    // transporter.sendMail(mailOptions, (error, info) => {
-    //     if (error) {
-    //         return console.log(error);
-    //     }
-    // });
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            return console.log(error);
+        }
+    });
     console.log(200);
 }

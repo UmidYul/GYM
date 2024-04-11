@@ -1,7 +1,7 @@
 {
   "admin": {
     "id": 1234567890123,
-    "name": "Zerox",
+    "name": "Zerox ",
     "email": "333zeroxyt@gmail.com",
     "password": "1234",
     "phone": "+998973355774"
@@ -9,7 +9,7 @@
   "members": [
     {
       "id": 1712418463734,
-      "name": "Умид",
+      "name": "Umid",
       "email": "yumid253@gmail.com",
       "password": "1234",
       "phone": "+998905329686",

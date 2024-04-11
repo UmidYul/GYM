@@ -126,11 +126,18 @@ app.post("/login", async (req, res) => {
 app.post("/register", async (req, res) => {
     await db.read()
     const { members } = db.data
-    const { name, email, validity, password, phone, plan, price, dateofjoin } = req.body
+    let { name, email, validity, password, phone, plan, price, dateofjoin } = req.body
     const id = Date.now() + Math.floor(Math.random() * 900) + 100;
     const date = new Date(req.body.dateofjoin);
     date.setMonth(date.getMonth() + Number(validity));
     const expire = date.toISOString().split('T')[0]
+    // Проверяем, начинается ли переменная N с "998"
+    if (!phone.startsWith('998')) {
+        phone = '+998' + phone;
+    } else {
+        phone = '+' + phone;
+    }
+
     members.push({
         id: id,
         name: name,
@@ -270,6 +277,46 @@ app.post("/getUsers", async (req, res) => {
     await db.read()
     const { members } = db.data
     res.send(JSON.stringify({ members }))
+})
+
+app.post("/edit-admin-data", async (req, res) => {
+    let { name, phone, email } = req.body
+    await db.read()
+    const { admin } = db.data
+    if (!phone.startsWith('998')) {
+        phone = '+998' + phone;
+    } else {
+        phone = '+' + phone;
+    }
+    admin.name = name
+    admin.phone = phone
+    admin.email = email
+    db.write()
+    res.send(JSON.stringify({
+        status: 200,
+        id: admin.id,
+        name: admin.name,
+        email: admin.email,
+        phone: admin.phone,
+        password: admin.password,
+        access: true
+    }))
+})
+app.post("/reset-admin-password", async (req, res) => {
+    let { password } = req.body
+    await db.read()
+    const { admin } = db.data
+    admin.password = password
+    db.write()
+    res.send(JSON.stringify({
+        status: 200,
+        id: admin.id,
+        name: admin.name,
+        email: admin.email,
+        phone: admin.phone,
+        password: admin.password,
+        access: true
+    }))
 })
 cron.schedule('0 0 * * *', async () => {
     SendEmail("yumid253@gmail.com", "Time Test №1", `Test 1`)

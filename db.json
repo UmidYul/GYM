@@ -17,333 +17,36 @@
       "status": "Active",
       "payments": [
         {
-          "id": 1712900186159,
-          "plan": "10 month",
-          "validity": 300,
-          "price": 100000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0026-01-01"
-        },
-        {
-          "id": 1712900254634,
+          "id": 1712925602688,
           "plan": "1 month",
-          "validity": 10,
-          "price": 1000000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0001-11-01"
-        }
-      ]
-    },
-    {
-      "id": 1712418463734,
-      "name": "Umid",
-      "email": "yumid253@gmail.com",
-      "password": "1234",
-      "phone": "+998905329686",
-      "dateofjoin": "2024-01-01",
-      "status": "Active",
-      "payments": [
-        {
-          "id": 1712900186159,
-          "plan": "10 month",
-          "validity": 300,
+          "validity": 13,
           "price": 100000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0026-01-01"
-        },
-        {
-          "id": 1712900254634,
-          "plan": "1 month",
-          "validity": 10,
-          "price": 1000000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0001-11-01"
-        }
-      ]
-    },
-    {
-      "id": 1712418463734,
-      "name": "Umid",
-      "email": "yumid253@gmail.com",
-      "password": "1234",
-      "phone": "+998905329686",
-      "dateofjoin": "2024-01-01",
-      "status": "Active",
-      "payments": [
-        {
-          "id": 1712900186159,
-          "plan": "10 month",
-          "validity": 300,
-          "price": 100000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0026-01-01"
-        },
-        {
-          "id": 1712900254634,
-          "plan": "1 month",
-          "validity": 10,
-          "price": 1000000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0001-11-01"
-        }
-      ]
-    },
-    {
-      "id": 1712418463734,
-      "name": "Umid",
-      "email": "yumid253@gmail.com",
-      "password": "1234",
-      "phone": "+998905329686",
-      "dateofjoin": "2024-01-01",
-      "status": "Active",
-      "payments": [
-        {
-          "id": 1712900186159,
-          "plan": "10 month",
-          "validity": 300,
-          "price": 100000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0026-01-01"
-        },
-        {
-          "id": 1712900254634,
-          "plan": "1 month",
-          "validity": 10,
-          "price": 1000000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0001-11-01"
-        }
-      ]
-    },
-    {
-      "id": 1712418463734,
-      "name": "Umid",
-      "email": "yumid253@gmail.com",
-      "password": "1234",
-      "phone": "+998905329686",
-      "dateofjoin": "2024-01-01",
-      "status": "Active",
-      "payments": [
-        {
-          "id": 1712900186159,
-          "plan": "10 month",
-          "validity": 300,
-          "price": 100000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0026-01-01"
-        },
-        {
-          "id": 1712900254634,
-          "plan": "1 month",
-          "validity": 10,
-          "price": 1000000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0001-11-01"
-        }
-      ]
-    },
-    {
-      "id": 1712418463734,
-      "name": "Umid",
-      "email": "yumid253@gmail.com",
-      "password": "1234",
-      "phone": "+998905329686",
-      "dateofjoin": "2024-01-01",
-      "status": "Active",
-      "payments": [
-        {
-          "id": 1712900186159,
-          "plan": "10 month",
-          "validity": 300,
-          "price": 100000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0026-01-01"
-        },
-        {
-          "id": 1712900254634,
-          "plan": "1 month",
-          "validity": 10,
-          "price": 1000000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0001-11-01"
-        }
-      ]
-    },
-    {
-      "id": 1712418463734,
-      "name": "Umid",
-      "email": "yumid253@gmail.com",
-      "password": "1234",
-      "phone": "+998905329686",
-      "dateofjoin": "2024-01-01",
-      "status": "Active",
-      "payments": [
-        {
-          "id": 1712900186159,
-          "plan": "10 month",
-          "validity": 300,
-          "price": 100000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0026-01-01"
-        },
-        {
-          "id": 1712900254634,
-          "plan": "1 month",
-          "validity": 10,
-          "price": 1000000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0001-11-01"
-        }
-      ]
-    },
-    {
-      "id": 1712418463734,
-      "name": "Umid",
-      "email": "yumid253@gmail.com",
-      "password": "1234",
-      "phone": "+998905329686",
-      "dateofjoin": "2024-01-01",
-      "status": "Active",
-      "payments": [
-        {
-          "id": 1712900186159,
-          "plan": "10 month",
-          "validity": 300,
-          "price": 100000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0026-01-01"
-        },
-        {
-          "id": 1712900254634,
-          "plan": "1 month",
-          "validity": 10,
-          "price": 1000000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0001-11-01"
-        }
-      ]
-    },
-    {
-      "id": 1712418463734,
-      "name": "Umid",
-      "email": "yumid253@gmail.com",
-      "password": "1234",
-      "phone": "+998905329686",
-      "dateofjoin": "2024-01-01",
-      "status": "Active",
-      "payments": [
-        {
-          "id": 1712900186159,
-          "plan": "10 month",
-          "validity": 300,
-          "price": 100000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0026-01-01"
-        },
-        {
-          "id": 1712900254634,
-          "plan": "1 month",
-          "validity": 10,
-          "price": 1000000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0001-11-01"
-        }
-      ]
-    },
-    {
-      "id": 1712418463734,
-      "name": "Umid",
-      "email": "yumid253@gmail.com",
-      "password": "1234",
-      "phone": "+998905329686",
-      "dateofjoin": "2024-01-01",
-      "status": "Active",
-      "payments": [
-        {
-          "id": 1712900186159,
-          "plan": "10 month",
-          "validity": 300,
-          "price": 100000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0026-01-01"
-        },
-        {
-          "id": 1712900254634,
-          "plan": "1 month",
-          "validity": 10,
-          "price": 1000000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0001-11-01"
-        }
-      ]
-    },
-    {
-      "id": 1712418463734,
-      "name": "Umid",
-      "email": "yumid253@gmail.com",
-      "password": "1234",
-      "phone": "+998905329686",
-      "dateofjoin": "2024-01-01",
-      "status": "Active",
-      "payments": [
-        {
-          "id": 1712900186159,
-          "plan": "10 month",
-          "validity": 300,
-          "price": 100000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0026-01-01"
-        },
-        {
-          "id": 1712900254634,
-          "plan": "1 month",
-          "validity": 10,
-          "price": 1000000,
-          "payment_date": "0001-01-01",
-          "expire_date": "0001-11-01"
+          "payment_date": "2024-08-17",
+          "expire_date": "2029-04-09"
         }
       ]
     },
     {
       "id": 1712418463735,
-      "name": "Shohrux",
-      "email": "member2",
+      "name": "Shoh",
+      "email": "yumid253@gmail.com",
       "password": "1234",
-      "phone": "+998973355774",
+      "phone": "+998905329686",
       "dateofjoin": "2024-01-01",
-      "status": "Expire",
+      "status": "Expired",
       "payments": [
         {
-          "plan": "3 month",
-          "validity": "3",
-          "price": "3000000000",
-          "payment_date": "2024-01-01",
-          "expire_date": "2024-04-08"
-        },
-        {
-          "plan": "6 month",
-          "validity": "6",
-          "price": "3000000000",
-          "payment_date": "2024-01-01",
-          "expire_date": "2024-07-08"
+          "id": 1712925612688,
+          "plan": "1 month",
+          "validity": 13,
+          "price": 100000,
+          "payment_date": "2024-08-17",
+          "expire_date": "2029-04-09"
         }
       ]
     }
   ],
-  "plans": [
-    {
-      "id": 1712897557648,
-      "name": "10 month",
-      "validity": 300,
-      "price": 100000
-    },
-    {
-      "id": 1712897616488,
-      "name": "1 month",
-      "validity": 10,
-      "price": 1000000
-    }
-  ],
+  "plans": [],
   "coaches": [
     {
       "id": 1712897557648,

@@ -48,7 +48,7 @@ fetch("/getUsers", {
                     edit.innerHTML = `<span class="arpc_4_block_column_title">Actions</span>`;
                     var count = 0;
                     data.forEach(function (user) {
-                        if (count < 5 && String(user.id).startsWith(searchQuery)) {
+                        if (count < 12 && String(user.id).startsWith(searchQuery)) {
                             name.innerHTML += ` <span class="arpc_4_block_column_text">${user.name}</span>`;
                             id.innerHTML += ` <span class="arpc_4_block_column_text">${user.id}</span>`;
                             payment.innerHTML += ` <span class="arpc_4_block_column_text">${user.payments[user.payments.length - 1].payment_date}</span>`;

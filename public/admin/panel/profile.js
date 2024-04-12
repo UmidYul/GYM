@@ -1,3 +1,5 @@
+import { alert } from "/admin/alert.js"
+const info = JSON.parse(localStorage.getItem("info"))
 
 document.getElementsByClassName("card_info")[0].innerHTML = `
 <div class="card_info_row"><span>Username: </span><span>${info.name}</span></div>
@@ -9,13 +11,12 @@ document.getElementsByClassName("card_info")[0].innerHTML = `
 document.getElementById("changeName").value = info.name
 document.getElementById("changePhone").value = info.phone.slice(1)
 document.getElementById("changeEmail").value = info.email
-
-function changeForm() {
+document.getElementById("changeForm").addEventListener("click", () => {
     const name = document.getElementById("changeName").value
     const phone = document.getElementById("changePhone").value
     const email = document.getElementById("changeEmail").value
 
-    const form = fetch("/edit-admin-data", {
+    fetch("/edit-admin-data", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -28,8 +29,9 @@ function changeForm() {
             localStorage.setItem("info", JSON.stringify(dat))
             window.location = "/admin#profile"
         })
-}
-function resetPass() {
+})
+
+document.getElementById("resetPass").addEventListener("click", () => {
     const info = JSON.parse(localStorage.getItem("info"))
     const Pass = document.getElementById("CurrentPass").value
     const newPass1 = document.getElementById("NewPass").value
@@ -51,14 +53,16 @@ function resetPass() {
                     window.location = "/admin#profile"
                 })
         } else {
-            console.log("new isnt equal");
+            alert("alert", 404, `Пароли Не Совпадают!
+             Пожалуйста Проверьте И Введите Его Заново.`)
         }
     } else {
-        console.log("pass isnt equal");
+        alert("alert", 404, `Вы Ввели НеПравильный Нынешний Пароль! 
+        Пожалуйста Проверьте И Введите Его Заново.`)
     }
-}
-function resetPassInputs() {
+})
+document.getElementById("resetPassInputs").addEventListener("click", () => {
     document.getElementById("CurrentPass").value = ""
     document.getElementById("NewPass").value = ""
     document.getElementById("repeatNewPass").value = ""
-}
+})

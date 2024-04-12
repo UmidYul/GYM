@@ -186,10 +186,11 @@ app.post("/register", async (req, res) => {
 })
 
 app.post("/add-payment", async (req, res) => {
-    const { id, plan, price, date, validity } = req.body
+    let { id, plan, price, date, validity } = req.body
+    console.log(req.body);
+    // validity = parseInt(validity, 10);
     await db.read()
     const { members } = db.data
-    console.log(id, plan, price, date, validity);
     function findIndexByEmail(id, members) {
         for (let i = 0; i < members.length; i++) {
             if (members[i].id == id) {
@@ -201,9 +202,9 @@ app.post("/add-payment", async (req, res) => {
     const priceToFind = id;
     const index = findIndexByEmail(priceToFind, members);
     if (index !== -1) {
-        const date1 = new Date(date);
-        date1.setMonth(date1.getMonth() + Number(validity));
-        const expire = date1.toISOString().split('T')[0]
+        const currentDate = new Date(date);
+        const tomorrow = new Date(currentDate.valueOf() + (86400000 * validity));
+        const expire = tomorrow.toISOString().split('T')[0]
         members[index].status = "Active"
         const id = Date.now()
         members[index].payments.push({
@@ -287,6 +288,12 @@ app.post("/getCoaches", async (req, res) => {
     await db.read()
     const { coaches } = db.data
     res.send(JSON.stringify({ coaches }))
+})
+
+app.post("/getPayments", async (req, res) => {
+    await db.read()
+    const { members } = db.data
+    res.send(JSON.stringify({ members }))
 })
 app.post("/removePlan", async (req, res) => {
     const { id } = req.body
@@ -378,7 +385,6 @@ app.post("/checkUpdates", async (req, res) => {
 })
 
 cron.schedule('09 14 * * *', async () => {
-    console.log(1);
     SendEmail("yumid253@gmail.com", "Time Test №1", `Test 1`)
     await db.read()
     const { members } = db.data

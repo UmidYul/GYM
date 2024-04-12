@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <div class="section_2">
+    <div class="section_2" id="alert">
         <div class="container">
             <div class="body_part_1">
 
@@ -211,9 +211,8 @@
             </div>
         </div>
     </div>
-
 </body>
-<script>
+<script type="module">
     if (localStorage.getItem("info")) {
         const response = fetch("/checkUpdates", {
             method: 'POST',

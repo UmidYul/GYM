@@ -1,5 +1,4 @@
-
-const users = fetch("/getCoaches", {
+fetch("/getCoaches", {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'

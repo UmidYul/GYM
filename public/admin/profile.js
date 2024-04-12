@@ -1,4 +1,3 @@
-const info = JSON.parse(localStorage.getItem("info"))
 
 document.getElementsByClassName("card_info")[0].innerHTML = `
 <div class="card_info_row"><span>Username: </span><span>${info.name}</span></div>

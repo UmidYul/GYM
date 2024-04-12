@@ -189,6 +189,7 @@ app.post("/add-payment", async (req, res) => {
     const { id, plan, price, date, validity } = req.body
     await db.read()
     const { members } = db.data
+    console.log(id, plan, price, date, validity);
     function findIndexByEmail(id, members) {
         for (let i = 0; i < members.length; i++) {
             if (members[i].id == id) {
@@ -213,11 +214,11 @@ app.post("/add-payment", async (req, res) => {
             payment_date: date,
             expire_date: expire
         })
-        SendEmail(email, "Подтверждение успешной оплаты!", `  
+        SendEmail(members[index].email, "Подтверждение успешной оплаты!", `  
         Уважаемый ,
-        
+
         Мы рады сообщить вам, что ваш платеж успешно обработан. Ниже приведены детали вашего платежа:
-        
+
         Данные платежа:
         - ID: ${id}
         - План: ${plan}
@@ -225,16 +226,17 @@ app.post("/add-payment", async (req, res) => {
         - Цена: ${price} сум
         - Дата платежа: ${date}
         - Дата истечения: ${expire}
-        
+
         Благодарим вас за доверие и использование наших услуг.
-        
+
         С уважением,        
-    
+
         Stamina Fitness
         `)
         db.write()
+        res.send(JSON.stringify(200))
     } else {
-        res.send(JSON.stringify({ text: "Данный Пользователь Не Найден!" }))
+        res.send(JSON.stringify(404))
     }
 })
 app.post("/price", async (req, res) => {
@@ -263,11 +265,13 @@ app.post("/add-plan", async (req, res) => {
     await db.read()
     const { plans } = db.data
     plans.push({
+        id: Date.now(),
         name: name,
         validity: Number(validity),
         price: Number(price)
     })
     db.write()
+    res.redirect("/admin#plan")
 })
 app.post("/getPlans", async (req, res) => {
     await db.read()
@@ -279,7 +283,24 @@ app.post("/getUsers", async (req, res) => {
     const { members } = db.data
     res.send(JSON.stringify({ members }))
 })
-
+app.post("/getCoaches", async (req, res) => {
+    await db.read()
+    const { coaches } = db.data
+    res.send(JSON.stringify({ coaches }))
+})
+app.post("/removePlan", async (req, res) => {
+    const { id } = req.body
+    await db.read()
+    const { plans } = db.data
+    const index = plans.findIndex(element => element.id == id);
+    if (index != -1) {
+        plans.splice(index, 1)
+        db.write()
+        res.send(JSON.stringify(200))
+    } else {
+        res.send(JSON.stringify(404))
+    }
+})
 app.post("/edit-admin-data", async (req, res) => {
     let { name, phone, email } = req.body
     await db.read()
@@ -356,7 +377,8 @@ app.post("/checkUpdates", async (req, res) => {
     }
 })
 
-cron.schedule('0 0 * * *', async () => {
+cron.schedule('09 14 * * *', async () => {
+    console.log(1);
     SendEmail("yumid253@gmail.com", "Time Test №1", `Test 1`)
     await db.read()
     const { members } = db.data

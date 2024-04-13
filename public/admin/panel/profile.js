@@ -1,6 +1,8 @@
 import { alert } from "/admin/alert.js"
 const info = JSON.parse(localStorage.getItem("info"))
-
+const change = document.getElementById("changeForm")
+const reset = document.getElementById("resetPass")
+const resetPass = document.getElementById("resetPassInputs")
 document.getElementsByClassName("card_info")[0].innerHTML = `
 <div class="card_info_row"><span>Username: </span><span>${info.name}</span></div>
 <div class="card_info_row"><span>Phone :
@@ -11,7 +13,9 @@ document.getElementsByClassName("card_info")[0].innerHTML = `
 document.getElementById("changeName").value = info.name
 document.getElementById("changePhone").value = info.phone.slice(1)
 document.getElementById("changeEmail").value = info.email
-document.getElementById("changeForm").addEventListener("click", () => {
+
+// Change Data
+change.addEventListener("click", function () {
     const name = document.getElementById("changeName").value
     const phone = document.getElementById("changePhone").value
     const email = document.getElementById("changeEmail").value
@@ -31,7 +35,9 @@ document.getElementById("changeForm").addEventListener("click", () => {
         })
 })
 
-document.getElementById("resetPass").addEventListener("click", () => {
+// Reset Password
+reset.addEventListener("click", function () {
+    console.log(1);
     const info = JSON.parse(localStorage.getItem("info"))
     const Pass = document.getElementById("CurrentPass").value
     const newPass1 = document.getElementById("NewPass").value
@@ -54,14 +60,17 @@ document.getElementById("resetPass").addEventListener("click", () => {
                 })
         } else {
             alert("alert", 404, `Пароли Не Совпадают!
-             Пожалуйста Проверьте И Введите Его Заново.`)
+                Пожалуйста Проверьте И Введите Его Заново.`)
         }
     } else {
         alert("alert", 404, `Вы Ввели НеПравильный Нынешний Пароль! 
         Пожалуйста Проверьте И Введите Его Заново.`)
     }
 })
-document.getElementById("resetPassInputs").addEventListener("click", () => {
+
+// Reset Inputs
+resetPass.addEventListener("click", function () {
+    console.log(2);
     document.getElementById("CurrentPass").value = ""
     document.getElementById("NewPass").value = ""
     document.getElementById("repeatNewPass").value = ""

@@ -13,7 +13,7 @@ fetch("/getPlans", {
 `)
     })
 
-document.getElementById("planSelect").addEventListener("click", () => {
+document.getElementById("planSelect").addEventListener("click", function () {
     fetch("/price", {
         method: 'POST',
         headers: {
@@ -35,7 +35,7 @@ document.getElementById("planSelect").addEventListener("click", () => {
 
 
 
-    document.getElementById('paymentBtn').addEventListener("click", () => {
+    document.getElementById('paymentBtn').addEventListener("click", function () {
         const id = document.getElementsByName("id")[0].value
         const plan = document.getElementsByName("plan")[0].value
         const date = document.getElementsByName("date")[0].value

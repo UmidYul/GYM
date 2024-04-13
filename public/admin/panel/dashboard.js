@@ -1,8 +1,5 @@
 const info = JSON.parse(localStorage.getItem("info"))
 setTimeout(() => {
-    document.getElementsByClassName("profile_name")[0].textContent = info.name
-    document.getElementsByClassName("profile_email")[0].textContent = "ID: " + info.id
-    
     document.getElementsByClassName("arpc_1_row_1_block_1_left_side_title")[0].innerHTML = `Привет
         <span>${info.name}</span>`
 }, 100);

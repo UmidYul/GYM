@@ -1,5 +1,6 @@
 const info = JSON.parse(localStorage.getItem("info"))
-
+document.getElementsByClassName("profile_name")[0].textContent = info.name
+document.getElementsByClassName("profile_email")[0].textContent = "ID: " + info.id
 if (JSON.parse(localStorage.getItem("info")).id != "5be7e2d39a6e4") {
     window.location = "/"
 }
@@ -93,7 +94,8 @@ function panel() {
                                             <div class="block_4_row">
                                                 <div class="arpc_1_row_1_block_4_header">
                                                     <div class="arpc_1_row_1_block_4_search_block">
-                                                        <input type="text" id="searchInput" placeholder="Search">
+                                                        <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                        maxlength="13" id="searchInput" placeholder="Search">
                                                     </div>
                                                  
                                                 </div>
@@ -280,7 +282,8 @@ function panel() {
                                         <div class="arpc_5_block_form_row_1">
                                             <div class="arpc_5_block_form_row_1_1">
                                                 <h1 class="arpc_5_h1">ID of Member</h1>
-                                                <input type="text" required name="id" class="arpc_5_inputs">
+                                                <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                maxlength="13" placeholder="ID" required name="id"  class="arpc_5_inputs">
                                             </div>
                                             <div class="arpc_5_block_form_row_1_2">
                                                 <h1 class="arpc_5_h1">Plan</h1>
@@ -311,8 +314,8 @@ function panel() {
                             </div>
                         </div>`,
         members: ` <div class="arpc_6">
-                            <input type="text" id="searchInput">
-
+                            <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                            maxlength="13" placeholder="Search By ID" id="searchInput">
                             <h1 class="arpc_6_title">Active Members</h1>
                             <div class="arpc_4_block">
                                 <div class="arpc_4_block_row">
@@ -378,7 +381,8 @@ function panel() {
                                 <input type="text" class="arpc_8_input">
                             </div>
                         </form> -->
-                        <input type="text" id="searchInput">
+                        <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        maxlength="13" placeholder="Search By ID" id="searchInput">
                         <div class="arpc_8_block " id="asd">
                             <div class="arpc_4_block_row">
                                 <div class="arpc_8_block_title">Payment History</div>
@@ -417,7 +421,7 @@ function panel() {
     });
 }
 panel()
-document.getElementById("signOut").addEventListener("click",()=>{
+document.getElementById("signOut").addEventListener("click", () => {
     localStorage.clear()
     window.location = "/"
 })

@@ -14,6 +14,7 @@
 body {
     background-color: #ECE9E9;
     position: relative;
+    overflow: hidden;
 }
 
 .sign_in {

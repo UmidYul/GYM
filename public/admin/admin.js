@@ -50,7 +50,7 @@ function panel() {
                                                     настройками и многим другим. Приятной работы!</div>
                                             </div>
                                             <div class="arpc_1_row_1_block_1_right_side">
-                                                <div class="arpc_1_row_1_block_1_right_side_circle"></div>
+                                                <div class="arpc_1_row_1_block_1_right_side_circle"><img src="/images/profile_person_white.png" alt=""></div>
                                             </div>
                                         </div>
                                     </div>
@@ -173,29 +173,61 @@ function panel() {
 
                         <div class="form_buttons">
                             <button id="resetPass" class="form_button_save btn">Change</button>
-                            <button id="resetPassInputs" class="form_button_cancel btn">Clear</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>`,
-        registration: ` <div class="arpc_3 ">
-                            <h1 class="arpc_3_subtitle">Become a Member!</h1>
-                            <h1 class="arpc_3_title">Registered</h1>
-                            <div class="arpc_3_block">
-                                <div class="arpc_3_block_row">
-                                    <h1 class="h1_row">ID: <span>1712418463734</span></h1>
-                                    <h1 class="h1_row">Name: <span>Zerox</span></h1>
-                                    <h1 class="h1_row">Email: <span>333zeroxyt@gmail.com</span></h1>
-                                    <h1 class="h1_row">Password: <span>123456</span></h1>
-                                    <h1 class="h1_row">Plan: <span>1 Month</span></h1>
-                                    <h1 class="h1_row">Price: <span>100 000</span></h1>
-                                    <h1 class="h1_row">Date Of Join: <span>2024.04.11</span></h1>
-                                </div>
-                                <button class="arpc_3_block_btn">OK</button>
-                            </div>
-                        </div>`,
+        registration: ` <div class="arpc_3">
+        <h1 class="arpc_3_subtitle">Become a Member</h1>
+        <h1 class="arpc_3_title">Register</h1>
+        <div class="arpc_3_block">
+            <div id="registerForm" class="arpc_3_block_form">
+                <div class="arpc_3_block_form_row_1">
+                    <div class="arpc_3_block_form_row_1_group_1">
+                        <h1 class="row_1_h1">Name of Participant</h1>
+                        <input type="text" id="nameInp" required name="name" class="row_1_input">
+                    </div>
+                    <div class="arpc_3_block_form_row_1_group_2">
+                        <h1 class="row_1_h1">Date of Join</h1>
+                        <input type="date" id="date" required name="dateofjoin" class="row_1_input">
+                    </div>
+                </div>
+                <div class="arpc_3_block_form_row_2">
+                    <div class="arpc_3_block_form_row_2_group_1">
+                        <h1 class="row_2_h1">Email Address</h1>
+                        <input type="text" id="email" required name="email" class="row_2_input">
+                    </div>
+                    <div class="arpc_3_block_form_row_2_group_2">
+                        <h1 class="row_2_h1">Phone</h1>
+                        <input type="number" id="phone" required name="phone" class="row_2_input">
+                    </div>
+                </div>
+                <div class="arpc_3_block_form_row_3">
+                    <div class="arpc_3_block_form_row_3_group_1">
+                        <h1 class="row_3_h1">Password</h1>
+                        <input type="text" id="pass" required name="password" class="row_3_input">
+                    </div>
+                    <div class="arpc_3_block_form_row_3_group_2">
+                        <h1 class="row_3_h1">Plan</h1>
+                        <select required class="row_3_input" id="planSelect" name="plan">
+                            <option value="None">Plan</option>
+                        </select>
+                    </div>
+                    <div class="arpc_3_block_form_row_3_group_3">
+                        <h1 class="row_3_h1">Price</h1>
+                        <input type="hidden" required id="hiddenValidityInput" name="validity">
+                        <input type="text" required id="priceInput" class="row_3_input" value="цена" readonly>
+                        <input type="hidden" required id="hiddenPriceInput" name="price">
+                    </div>
+                </div>
+                <div class="form_buttons arpc_3_block_form_btn_1">
+                    <button id="registerFormBtn" class="form_button_save btn">Save</button>
+                </div>
+            </form>
+        </div>
+     </div>`,
         plan: `<div class="arpc_4 ">
                             <form action="/add-plan" method="post" class="arpc_4_form">
                                 <div class="arpc_4_row">
@@ -212,7 +244,6 @@ function panel() {
                                         </div>
                                         <div class="arpc_4_form_right_buttons">
                                             <button class="arpc_4_form_right_button_save">Save</button>
-
                                         </div>
                                     </div>
                                 </div>
@@ -386,7 +417,7 @@ function panel() {
     });
 }
 panel()
-function signOut() {
+document.getElementById("signOut").addEventListener("click",()=>{
     localStorage.clear()
     window.location = "/"
-}
+})

@@ -3,8 +3,8 @@
     "id": "5be7e2d39a6e4",
     "name": "Zerox",
     "email": "333zeroxyt@gmail.com",
-    "password": "1234",
-    "phone": "+998973355774"
+    "password": "123456",
+    "phone": "+998973355775"
   },
   "members": [
     {
@@ -44,13 +44,49 @@
           "expire_date": "2029-04-09"
         }
       ]
+    },
+    {
+      "id": 1712992855292,
+      "name": "Zerox123",
+      "email": "333zesdafroxy123t@gmail.com",
+      "password": "1412123",
+      "phone": "+998124321434",
+      "dateofjoin": "2024-04-13",
+      "status": "Active",
+      "payments": [
+        {
+          "plan": "1",
+          "validity": 33,
+          "price": 67567,
+          "payment_date": "2024-04-13",
+          "expire_date": "2024-05-16"
+        }
+      ]
+    },
+    {
+      "id": 1712993004173,
+      "name": "eqwe1433214",
+      "email": "4324324234",
+      "password": "234",
+      "phone": "+9984324234",
+      "dateofjoin": "0004-04-04",
+      "status": "Active",
+      "payments": [
+        {
+          "plan": "1",
+          "validity": 33,
+          "price": 67567,
+          "payment_date": "0004-04-04",
+          "expire_date": "0004-05-07"
+        }
+      ]
     }
   ],
   "plans": [
     {
       "id": 1712980497863,
-      "name": "5655",
-      "validity": 567,
+      "name": "1",
+      "validity": 33,
       "price": 67567
     }
   ],

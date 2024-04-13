@@ -63,15 +63,9 @@ function panel() {
                                                     <!-- <div class="arpc_1_row_2_block_2_header_dot"><i
                                                             class="fa-solid fa-ellipsis-vertical"></i></div> -->
                                                 </div>
-                                                <div class="arpc_1_row_2_block_2_list">
-                                                    <div class="arpc_1_row_2_block_2_list_row">
-                                                        <div class="arpc_1_row_2_block_2_list_row_circle"></div>
-                                                        <div class="arpc_1_row_2_block_2_list_row_name">Juan Dela Cruz</div>
-                                                    </div>
-                                                    <div class="arpc_1_row_2_block_2_list_row">
-                                                        <div class="arpc_1_row_2_block_2_list_row_circle"></div>
-                                                        <div class="arpc_1_row_2_block_2_list_row_name">Juan Dela Cruz</div>
-                                                    </div>
+                                                <div class="arpc_1_row_2_block_2_list" >
+                                                  
+                                                   
                                                 </div>
                                             </div>
                                         </div>

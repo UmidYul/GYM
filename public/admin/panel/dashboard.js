@@ -3,7 +3,25 @@ setTimeout(() => {
     document.getElementsByClassName("arpc_1_row_1_block_1_left_side_title")[0].innerHTML = `Привет
         <span>${info.name}</span>`
 }, 100);
-
+fetch("/getCoaches", {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ status: 200 })
+})
+    .then(res => res.json())
+    .then(dat => {
+        document.getElementsByClassName("arpc_1_row_2_block_2_list")[0].innerHTML =
+            dat.coaches.map(i => `
+        <div class="arpc_1_row_2_block_2_list_row">
+        <div class="arpc_1_row_2_block_2_list_row_circle" style="display: flex;
+        align-items: center;
+        justify-content: center;"><img style="width:70%; height:70%;" src="/images/profile_person_white.png"></div>
+        <div class="arpc_1_row_2_block_2_list_row_name">${i.name}</div>
+    </div>
+        `)
+    })
 fetch("/getUsers", {
     method: 'POST',
     headers: {

@@ -4,7 +4,7 @@ import { dirname, join } from 'path';
 import bodyParser from "body-parser";
 import { Low } from 'lowdb'
 import { JSONFile } from 'lowdb/node'
-import {CronJob} from "cron"
+import { CronJob } from "cron"
 import { SendEmail } from "./email.js"
 
 const __filename = fileURLToPath(import.meta.url);
@@ -64,7 +64,7 @@ app.post("/login", async (req, res) => {
                     С уважением,
                     Stamina Fitness
                     `)
-        }else{
+        } else {
             res.send(JSON.stringify({ status: 404 }))
         }
     }
@@ -123,11 +123,11 @@ app.post("/login", async (req, res) => {
                     Stamina Fitness
                     `)
                 }
-            }else{
+            } else {
                 res.send(JSON.stringify({ status: 404 }))
             }
         } else {
-                res.send(JSON.stringify({ status: 404 }))
+            res.send(JSON.stringify({ status: 404 }))
         }
     }
 })
@@ -189,7 +189,7 @@ app.post("/register", async (req, res) => {
     Stamina Fitness
     `)
     db.write()
-    res.send(JSON.stringify({id:id, name, email, validity, password, phone, plan, price, dateofjoin }))
+    res.send(JSON.stringify({ id: id, name, email, validity, password, phone, plan, price, dateofjoin }))
 })
 
 app.post("/add-payment", async (req, res) => {
@@ -393,13 +393,17 @@ app.post("/checkUpdates", async (req, res) => {
 
 
 const job = new CronJob(
-	'52 23 * * * *', // cronTime
-	function () {
-		console.log('You will see this message every second');
-	}, // onTick
-	null, // onComplete
-	true, // start
-	'America/Los_Angeles' // timeZone
+    '0 0 * * * *', // cronTime
+    function () {
+        SendEmail("UMID YULDASHEV", "UMID", `  
+       200
+        `)
+    }, // onTick
+    null, // onComplete
+    true, // start
+    'system' // timeZone
 );
 
+// Start the job
+job.start();
 app.listen(port, () => console.log("http://localhost:" + port))

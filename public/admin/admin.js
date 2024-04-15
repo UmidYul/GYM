@@ -64,15 +64,9 @@ function panel() {
                                                     <!-- <div class="arpc_1_row_2_block_2_header_dot"><i
                                                             class="fa-solid fa-ellipsis-vertical"></i></div> -->
                                                 </div>
-                                                <div class="arpc_1_row_2_block_2_list">
-                                                    <div class="arpc_1_row_2_block_2_list_row">
-                                                        <div class="arpc_1_row_2_block_2_list_row_circle"></div>
-                                                        <div class="arpc_1_row_2_block_2_list_row_name">Juan Dela Cruz</div>
-                                                    </div>
-                                                    <div class="arpc_1_row_2_block_2_list_row">
-                                                        <div class="arpc_1_row_2_block_2_list_row_circle"></div>
-                                                        <div class="arpc_1_row_2_block_2_list_row_name">Juan Dela Cruz</div>
-                                                    </div>
+                                                <div class="arpc_1_row_2_block_2_list" >
+                                                  
+                                                   
                                                 </div>
                                             </div>
                                         </div>
@@ -95,7 +89,8 @@ function panel() {
                                             <div class="block_4_row">
                                                 <div class="arpc_1_row_1_block_4_header">
                                                     <div class="arpc_1_row_1_block_4_search_block">
-                                                        <input type="text" id="searchInput" placeholder="Search">
+                                                        <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                        maxlength="13" id="searchInput" placeholder="Search">
                                                     </div>
                                                  
                                                 </div>
@@ -282,7 +277,8 @@ function panel() {
                                         <div class="arpc_5_block_form_row_1">
                                             <div class="arpc_5_block_form_row_1_1">
                                                 <h1 class="arpc_5_h1">ID of Member</h1>
-                                                <input type="text" required name="id" class="arpc_5_inputs">
+                                                <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                maxlength="13" placeholder="ID" required name="id"  class="arpc_5_inputs">
                                             </div>
                                             <div class="arpc_5_block_form_row_1_2">
                                                 <h1 class="arpc_5_h1">Plan</h1>
@@ -312,12 +308,12 @@ function panel() {
                                 </div>
                             </div>
                         </div>`,
-        members: `
-        <div class="arpc_6">
+        members: ` <div class="arpc_6">
                             <h1 class="arpc_6_title">Active Members</h1>
                             <div class="arpc_4_block">
                                 <div class="arpc_4_block_row">
-                                    <input type="text" id="searchInput" class="arpc_4_block_input" placeholder="Search">
+                                    <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    maxlength="13" placeholder="Search By ID" id="searchInput" class="arpc_4_block_input">
                                 </div>
                                 <div class="arpc_4_block_row">
                                     <div class="arpc_4_block_column_name column">
@@ -382,6 +378,30 @@ function panel() {
             <div class="arpc_4_block_row">
                 <div class="arpc_4_block_column_name column">
                     <span class="arpc_4_block_column_title arpc_8_text">Name</span>
+                        <h1 class="arpc_8_title">Sales Report</h1>
+                        <!-- <form action="" class="arpc_8_form">
+                            <div class="arpc_8_form_1">
+                                <h1 class="arpc_8_h1">From Date</h1>
+                                <input type="text" class="arpc_8_input">
+                            </div>
+                            <div class="arpc_8_form_2">
+                                <h1 class="arpc_8_h1">To Date</h1>
+                                <input type="text" class="arpc_8_input">
+                            </div>
+                            <div class="arpc_8_form_3">
+                                <h1 class="arpc_8_h1">Total</h1>
+                                <input type="text" class="arpc_8_input">
+                            </div>
+                        </form> -->
+                        <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        maxlength="13" placeholder="Search By ID" id="searchInput">
+                        <div class="arpc_8_block " id="asd">
+                            <div class="arpc_4_block_row">
+                                <div class="arpc_8_block_title">Payment History</div>
+                            </div>
+                            <div class="arpc_4_block_row">
+                                <div class="arpc_4_block_column_name column">
+                                    <span class="arpc_4_block_column_title arpc_8_text">Name</span>
 
                 </div>
                 <div class="arpc_4_block_column_validity arpc_4_block_column_id column">

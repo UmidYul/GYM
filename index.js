@@ -393,8 +393,6 @@ app.post("/checkUpdates", async (req, res) => {
         }
     }
 })
-
-
 const job = new CronJob(
     '0 0 * * * *', // cronTime
     function () {

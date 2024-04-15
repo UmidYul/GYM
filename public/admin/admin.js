@@ -1,4 +1,6 @@
 const info = JSON.parse(localStorage.getItem("info"))
+document.getElementsByClassName("profile_name")[0].textContent = info.name
+document.getElementsByClassName("profile_email")[0].textContent = "ID: " + info.id
 
 if (JSON.parse(localStorage.getItem("info")).id != "5be7e2d39a6e4") {
     window.location = "/"
@@ -337,9 +339,9 @@ function panel() {
                             </div>
                         </div>
         `,
-        coaches: `  <div class="arpc_7 ">
+        coaches: `  <div class="arpc_7" id="formField">
         <h1 class="arpc_6_title">Active Coaches</h1>
-        <button class="arpc_7_button ">Add Coach</button>
+        <button class="arpc_7_button" id="coachBtn">Add Coach</button>
         <div class="arpc_4_block ">
             <div class="arpc_4_block_row">
                 <div class="arpc_4_block_column_name column">
@@ -365,56 +367,6 @@ function panel() {
             </div>
         </div>
 
-        <div class="arpc_3_block">
-            <div id="registerForm" class="arpc_3_block_form">
-                <div class="arpc_3_block_form_row_1">
-                    <div class="arpc_3_block_form_row_1_group_1">
-                        <h1 class="row_1_h1">Name of Coach</h1>
-                        <input type="text" id="nameInp" required name="name" class="row_1_input">
-                    </div>
-                    <div class="arpc_3_block_form_row_1_group_2">
-                        <h1 class="row_1_h1">Date of Join</h1>
-                        <input type="date" id="date" required name="dateofjoin" class="row_1_input">
-                    </div>
-                </div>
-                <div class="arpc_3_block_form_row_2">
-                    <div class="arpc_3_block_form_row_2_group_1">
-                        <h1 class="row_2_h1">Email Address</h1>
-                        <input type="text" id="email" required name="email" class="row_2_input">
-                    </div>
-                    <div class="arpc_3_block_form_row_2_group_2">
-                        <h1 class="row_2_h1">Phone</h1>
-                        <input type="number" id="phone" required name="phone" class="row_2_input">
-                    </div>
-                </div>
-                <h1 class="coach_available_days_title">Available Days</h1>
-                <div class="coach_available_days">
-                    <div class="coach_available_days_row">
-                        <input type="checkbox" name="" id="">Mon
-                    </div>
-                    <div class="coach_available_days_row">
-                        <input type="checkbox" name="" id="">Tue
-                    </div>
-                    <div class="coach_available_days_row">
-                        <input type="checkbox" name="" id="">Wed
-                    </div>
-                    <div class="coach_available_days_row">
-                        <input type="checkbox" name="" id="">Thu
-                    </div>
-                    <div class="coach_available_days_row">
-                        <input type="checkbox" name="" id="">Fri
-                    </div>
-                    <div class="coach_available_days_row">
-                        <input type="checkbox" name="" id="">Sat
-                    </div>
-                    <div class="coach_available_days_row">
-                        <input type="checkbox" name="" id="">Sun
-                    </div>
-                </div>
-                <div class="form_buttons arpc_3_block_form_btn_1">
-                    <button id="registerFormBtn" class="form_button_save btn">Save</button>
-                </div>
-            </form>
         </div>
     </div>
 </div> `,
@@ -461,7 +413,7 @@ function panel() {
     });
 }
 panel()
-document.getElementById("signOut").addEventListener("click",()=>{
+document.getElementById("signOut").addEventListener("click", () => {
     localStorage.clear()
     window.location = "/"
 })

@@ -54,3 +54,79 @@ fetch("/getCoaches", {
         }
         Search()
     })
+
+document.getElementById("coachBtn").addEventListener("click", () => {
+    document.getElementById("formField").innerHTML = ` 
+    <div class="arpc_3_block" id="coachForm">
+        <div id="registerForm" class="arpc_3_block_form">
+            <div class="arpc_3_block_form_row_1">
+                <div class="arpc_3_block_form_row_1_group_1">
+                    <h1 class="row_1_h1">Name of Coach</h1>
+                    <input type="text" id="nameInp" required name="name" class="row_1_input">
+                </div>
+                <div class="arpc_3_block_form_row_1_group_2">
+                    <h1 class="row_1_h1">Date of Join</h1>
+                    <input type="date" id="date" required name="dateofjoin" class="row_1_input">
+                </div>
+            </div>
+            <div class="arpc_3_block_form_row_2">
+                <div class="arpc_3_block_form_row_2_group_1">
+                    <h1 class="row_2_h1">Email Address</h1>
+                    <input type="text" id="email" required name="email" class="row_2_input">
+                </div>
+                <div class="arpc_3_block_form_row_2_group_2">
+                    <h1 class="row_2_h1">Phone</h1>
+                    <input type="number" id="phone" required name="phone" class="row_2_input">
+                </div>
+            </div>
+            <h1 class="coach_available_days_title">Available Days</h1>
+            <div class="coach_available_days">
+                <div class="coach_available_days_row">
+                    <input type="checkbox" name="weekday" id="">Mon
+                </div>
+                <div class="coach_available_days_row">
+                    <input type="checkbox" name="weekday" id="">Tue
+                </div>
+                <div class="coach_available_days_row">
+                    <input type="checkbox" name="weekday" id="">Wed
+                </div>
+                <div class="coach_available_days_row">
+                    <input type="checkbox" name="weekday" id="">Thu
+                </div>
+                <div class="coach_available_days_row">
+                    <input type="checkbox" name="weekday" id="">Fri
+                </div>
+                <div class="coach_available_days_row">
+                    <input type="checkbox" name="weekday" id="">Sat
+                </div>
+                <div class="coach_available_days_row">
+                    <input type="checkbox" name="weekday" id="">Sun
+                </div>
+            </div>
+            <div class="form_buttons arpc_3_block_form_btn_1">
+                <button id="registerFormBtn" type="submit" class="form_button_save btn">Save</button>
+                <button id="CancelFormBtn" class="form_button_save btn">Cancel</button>
+            </div>
+        </div>`
+    document.getElementById("CancelFormBtn").addEventListener("click", () => {
+        window.location = "/admin#coaches"
+    })
+    document.getElementById("registerFormBtn").addEventListener("click", () => {
+        const name = document.getElementById("nameInp")
+        const date = document.getElementById("date")
+        const email = document.getElementById("email")
+        const phone = document.getElementById("phone")
+        const week = document.getElementById("weekday")
+        fetch("/add-coaches", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name: name, date: date, email: email, phone: phone, week: week })
+        })
+            .then(res => res.json())
+            .then(dat => {
+                console.log(dat);
+            })
+    })
+})

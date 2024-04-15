@@ -12,8 +12,8 @@ fetch("/getPlans", {
         const validityDiv = document.getElementsByClassName("arpc_4_block_column_validity ")[0]
         const priceDiv = document.getElementsByClassName("arpc_4_block_column_price")[0]
         const editDiv = document.getElementsByClassName("arpc_4_block_column_edit")[0]
-        if (data.obj.length > 8) {
-            data.obj = data.obj.slice(0, 8)
+        if (data.obj.length > 3) {
+            data.obj = data.obj.slice(0, 3)
         }
         nameDiv.innerHTML += data.obj.map(i => `
             <span class="arpc_4_block_column_text">${i.name}</span>

@@ -1,10 +1,11 @@
 const info = JSON.parse(localStorage.getItem("info"))
-document.getElementsByClassName("profile_name")[0].textContent = info.name
-document.getElementsByClassName("profile_email")[0].textContent = "ID: " + info.id
-
-document.getElementsByClassName("arpc_1_row_1_block_1_left_side_title")[0].innerHTML = `Привет
-    <span>${info.name}</span>`
-
+setTimeout(() => {
+    document.getElementsByClassName("profile_name")[0].textContent = info.name
+    document.getElementsByClassName("profile_email")[0].textContent = "ID: " + info.id
+    
+    document.getElementsByClassName("arpc_1_row_1_block_1_left_side_title")[0].innerHTML = `Привет
+        <span>${info.name}</span>`
+}, 100);
 
 fetch("/getUsers", {
     method: 'POST',
@@ -15,8 +16,9 @@ fetch("/getUsers", {
 })
     .then(res => res.json())
     .then(dat => {
+
+
         const data = dat.members
-        console.log(data);
         document.getElementsByClassName("arpc_1_row_3_block_4_list_name")[0].innerHTML +=
             dat.members.slice(-5).map(i => `
         <div class="arpc_1_row_3_block_4_list_name_row">

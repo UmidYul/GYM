@@ -48,7 +48,7 @@
                         <input required type="text" id="email">
                         <h1 class="password_title">Password<span>*</span></h1>
                         <input required type="password" id="password"> <br>
-                        <button id="Submit">Login</button>
+                        <button id="Submit" onclick="Submit()">Login</button>
                     </div>
                 </div>
                 <div class="sign_in_right"><img src="/images/body_part_1_img.png" alt=""></div>
@@ -61,7 +61,8 @@
     if (localStorage.getItem("info")) {
         window.location = "/"
     }
-    document.getElementById("Submit").addEventListener("click", () => {
+    function Submit() {
+        console.log(1423);
         fetch('https://api.ipify.org?format=json')
             .then(response => response.json())
             .then(data => {
@@ -83,7 +84,7 @@
                 const password = document.getElementById("password")
                 const msg_success = document.getElementById("msg_success")
                 const msg_err = document.getElementById("msg_err")
-                const res = fetch("/login", {
+                fetch("/login", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -92,6 +93,7 @@
                 })
                     .then(res => res.json())
                     .then(dat => {
+                        console.log(dat);
                         if (dat.status == 404) {
                             document.getElementsByClassName("wrapper-warning")[0].style.display = "block"
                             msg_err.innerText = "Простите Логин или Пароль Не Правильные Попробуйте Заново!"
@@ -122,10 +124,9 @@
             })
             .catch(error => {
                 console.error('Произошла ошибка при получении IP-адреса:', error);
-            });
+            });        
+    }
 
-
-    })
 </script>
 
 </html>

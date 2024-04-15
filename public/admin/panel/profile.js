@@ -9,6 +9,8 @@ document.getElementsByClassName("card_info")[0].innerHTML = `
     </span><span>${info.phone}</span></div>
 <div class="card_info_row"><span>Email:
     </span><span>${info.email}</span></div>
+    <div class="card_info_row"><span>Password:
+    </span><span>${info.password}</span></div>
 `
 document.getElementById("changeName").value = info.name
 document.getElementById("changePhone").value = info.phone.slice(1)
@@ -59,19 +61,9 @@ reset.addEventListener("click", function () {
                     window.location = "/admin#profile"
                 })
         } else {
-            alert("alert", 404, `Пароли Не Совпадают!
-                Пожалуйста Проверьте И Введите Его Заново.`)
+            window.location = "/admin#profile"
         }
     } else {
-        alert("alert", 404, `Вы Ввели НеПравильный Нынешний Пароль! 
-        Пожалуйста Проверьте И Введите Его Заново.`)
+        window.location = "/admin#profile"
     }
-})
-
-// Reset Inputs
-resetPass.addEventListener("click", function () {
-    console.log(2);
-    document.getElementById("CurrentPass").value = ""
-    document.getElementById("NewPass").value = ""
-    document.getElementById("repeatNewPass").value = ""
 })

@@ -4,7 +4,7 @@ import { dirname, join } from 'path';
 import bodyParser from "body-parser";
 import { Low } from 'lowdb'
 import { JSONFile } from 'lowdb/node'
-import cron from "node-cron"
+import {CronJob} from "cron"
 import { SendEmail } from "./email.js"
 
 const __filename = fileURLToPath(import.meta.url);
@@ -33,8 +33,11 @@ app.post("/login", async (req, res) => {
     await db.read()
     const { email, password, ip, date } = req.body
     const { members, admin } = db.data
+    console.log("200");
     if (email == admin.email) {
+        console.log(1);
         if (password == admin.password) {
+            console.log(2);
             res.send(JSON.stringify({
                 id: admin.id,
                 name: admin.name,
@@ -61,6 +64,8 @@ app.post("/login", async (req, res) => {
                     С уважением,
                     Stamina Fitness
                     `)
+        }else{
+            res.send(JSON.stringify({ status: 404 }))
         }
     }
     else {
@@ -72,7 +77,6 @@ app.post("/login", async (req, res) => {
             }
             return -1;
         }
-
         const emailToFind = email;
         const index = findIndexByEmail(emailToFind, members);
         if (index !== -1) {
@@ -101,6 +105,7 @@ app.post("/login", async (req, res) => {
                     Stamina Fitness
                     `)
                 } else {
+                    res.send(JSON.stringify({ status: 404 }))
                     SendEmail(members[index].email, "Не завершённый вход в аккаунт!", `
                     Здравствуйте ${members[index].name},
                     
@@ -118,9 +123,11 @@ app.post("/login", async (req, res) => {
                     Stamina Fitness
                     `)
                 }
+            }else{
+                res.send(JSON.stringify({ status: 404 }))
             }
         } else {
-            res.send(JSON.stringify({ status: 404 }))
+                res.send(JSON.stringify({ status: 404 }))
         }
     }
 })
@@ -129,9 +136,9 @@ app.post("/register", async (req, res) => {
     const { members } = db.data
     let { name, email, validity, password, phone, plan, price, dateofjoin } = req.body
     const id = Date.now() + Math.floor(Math.random() * 900) + 100;
-    const date = new Date(req.body.dateofjoin);
-    date.setMonth(date.getMonth() + Number(validity));
-    const expire = date.toISOString().split('T')[0]
+    const currentDate = new Date(dateofjoin);
+    const tomorrow = new Date(currentDate.valueOf() + (86400000 * validity));
+    const expire = tomorrow.toISOString().split('T')[0]
     // Проверяем, начинается ли переменная N с "998"
     if (!phone.startsWith('998')) {
         phone = '+998' + phone;
@@ -182,7 +189,7 @@ app.post("/register", async (req, res) => {
     Stamina Fitness
     `)
     db.write()
-    res.redirect("/admin")
+    res.send(JSON.stringify({id:id, name, email, validity, password, phone, plan, price, dateofjoin }))
 })
 
 app.post("/add-payment", async (req, res) => {
@@ -216,7 +223,7 @@ app.post("/add-payment", async (req, res) => {
             expire_date: expire
         })
         SendEmail(members[index].email, "Подтверждение успешной оплаты!", `  
-        Уважаемый ,
+        Уважаемый ${members[index].name},
 
         Мы рады сообщить вам, что ваш платеж успешно обработан. Ниже приведены детали вашего платежа:
 
@@ -384,21 +391,15 @@ app.post("/checkUpdates", async (req, res) => {
     }
 })
 
-cron.schedule('09 14 * * *', async () => {
-    SendEmail("yumid253@gmail.com", "Time Test №1", `Test 1`)
-    await db.read()
-    const { members } = db.data
-    for (let i = 0; i < members.length; i++) {
-        const e = members[i];
-        const date1 = new Date();
-        const date2 = new Date(e.payments[e.payments.length - 1].expire_date);
-        if (date1 >= date2) {
-            if (e.status == "Active") {
-                e.status = "Expired"
-                db.write()
-            }
-        }
-    }
-});
+
+const job = new CronJob(
+	'52 23 * * * *', // cronTime
+	function () {
+		console.log('You will see this message every second');
+	}, // onTick
+	null, // onComplete
+	true, // start
+	'America/Los_Angeles' // timeZone
+);
 
 app.listen(port, () => console.log("http://localhost:" + port))

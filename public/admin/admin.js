@@ -50,7 +50,7 @@ function panel() {
                                                     настройками и многим другим. Приятной работы!</div>
                                             </div>
                                             <div class="arpc_1_row_1_block_1_right_side">
-                                                <div class="arpc_1_row_1_block_1_right_side_circle"></div>
+                                                <div class="arpc_1_row_1_block_1_right_side_circle"><img src="/images/profile_person_white.png" alt=""></div>
                                             </div>
                                         </div>
                                     </div>
@@ -173,29 +173,61 @@ function panel() {
 
                         <div class="form_buttons">
                             <button id="resetPass" class="form_button_save btn">Change</button>
-                            <button id="resetPassInputs" class="form_button_cancel btn">Clear</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>`,
-        registration: ` <div class="arpc_3 ">
-                            <h1 class="arpc_3_subtitle">Become a Member!</h1>
-                            <h1 class="arpc_3_title">Registered</h1>
-                            <div class="arpc_3_block">
-                                <div class="arpc_3_block_row">
-                                    <h1 class="h1_row">ID: <span>1712418463734</span></h1>
-                                    <h1 class="h1_row">Name: <span>Zerox</span></h1>
-                                    <h1 class="h1_row">Email: <span>333zeroxyt@gmail.com</span></h1>
-                                    <h1 class="h1_row">Password: <span>123456</span></h1>
-                                    <h1 class="h1_row">Plan: <span>1 Month</span></h1>
-                                    <h1 class="h1_row">Price: <span>100 000</span></h1>
-                                    <h1 class="h1_row">Date Of Join: <span>2024.04.11</span></h1>
-                                </div>
-                                <button class="arpc_3_block_btn">OK</button>
-                            </div>
-                        </div>`,
+        registration: ` <div class="arpc_3">
+        <h1 class="arpc_3_subtitle">Become a Member</h1>
+        <h1 class="arpc_3_title">Register</h1>
+        <div class="arpc_3_block">
+            <div id="registerForm" class="arpc_3_block_form">
+                <div class="arpc_3_block_form_row_1">
+                    <div class="arpc_3_block_form_row_1_group_1">
+                        <h1 class="row_1_h1">Name of Participant</h1>
+                        <input type="text" id="nameInp" required name="name" class="row_1_input">
+                    </div>
+                    <div class="arpc_3_block_form_row_1_group_2">
+                        <h1 class="row_1_h1">Date of Join</h1>
+                        <input type="date" id="date" required name="dateofjoin" class="row_1_input">
+                    </div>
+                </div>
+                <div class="arpc_3_block_form_row_2">
+                    <div class="arpc_3_block_form_row_2_group_1">
+                        <h1 class="row_2_h1">Email Address</h1>
+                        <input type="text" id="email" required name="email" class="row_2_input">
+                    </div>
+                    <div class="arpc_3_block_form_row_2_group_2">
+                        <h1 class="row_2_h1">Phone</h1>
+                        <input type="number" id="phone" required name="phone" class="row_2_input">
+                    </div>
+                </div>
+                <div class="arpc_3_block_form_row_3">
+                    <div class="arpc_3_block_form_row_3_group_1">
+                        <h1 class="row_3_h1">Password</h1>
+                        <input type="text" id="pass" required name="password" class="row_3_input">
+                    </div>
+                    <div class="arpc_3_block_form_row_3_group_2">
+                        <h1 class="row_3_h1">Plan</h1>
+                        <select required class="row_3_input" id="planSelect" name="plan">
+                            <option value="None">Plan</option>
+                        </select>
+                    </div>
+                    <div class="arpc_3_block_form_row_3_group_3">
+                        <h1 class="row_3_h1">Price</h1>
+                        <input type="hidden" required id="hiddenValidityInput" name="validity">
+                        <input type="text" required id="priceInput" class="row_3_input" value="цена" readonly>
+                        <input type="hidden" required id="hiddenPriceInput" name="price">
+                    </div>
+                </div>
+                <div class="form_buttons arpc_3_block_form_btn_1">
+                    <button id="registerFormBtn" class="form_button_save btn">Save</button>
+                </div>
+            </form>
+        </div>
+     </div>`,
         plan: `<div class="arpc_4 ">
                             <form action="/add-plan" method="post" class="arpc_4_form">
                                 <div class="arpc_4_row">
@@ -212,7 +244,6 @@ function panel() {
                                         </div>
                                         <div class="arpc_4_form_right_buttons">
                                             <button class="arpc_4_form_right_button_save">Save</button>
-
                                         </div>
                                     </div>
                                 </div>
@@ -279,11 +310,13 @@ function panel() {
                                 </div>
                             </div>
                         </div>`,
-        members: ` <div class="arpc_6">
-                            <input type="text" id="searchInput">
-
+        members: `
+        <div class="arpc_6">
                             <h1 class="arpc_6_title">Active Members</h1>
                             <div class="arpc_4_block">
+                                <div class="arpc_4_block_row">
+                                    <input type="text" id="searchInput" class="arpc_4_block_input" placeholder="Search">
+                                </div>
                                 <div class="arpc_4_block_row">
                                     <div class="arpc_4_block_column_name column">
                                         <span class="arpc_4_block_column_title">Name</span>
@@ -303,77 +336,119 @@ function panel() {
                                 </div>
                             </div>
                         </div>
-`,
-        coaches: `   <div class="arpc_7 ">
-                        <h1 class="arpc_6_title">Active Coaches</h1>
-                        <div class="arpc_4_block">
-                            <div class="arpc_4_block_row">
-                                <div class="arpc_4_block_column_name column">
-                                    <span class="arpc_4_block_column_title">Name</span>
+        `,
+        coaches: `  <div class="arpc_7 ">
+        <h1 class="arpc_6_title">Active Coaches</h1>
+        <button class="arpc_7_button ">Add Coach</button>
+        <div class="arpc_4_block ">
+            <div class="arpc_4_block_row">
+                <div class="arpc_4_block_column_name column">
+                    <span class="arpc_4_block_column_title">Name</span>
 
-                                </div>
-                                <div class="arpc_4_block_column_validity arpc_4_block_column_id column">
-                                    <span class="arpc_4_block_column_title">Coach ID</span>
+                </div>
+                <div class="arpc_4_block_column_validity arpc_4_block_column_id column">
+                    <span class="arpc_4_block_column_title">Coach ID</span>
 
-                                </div>
-                                <div class="arpc_4_block_column_price arpc_4_block_column_phone column">
-                                    <span class="arpc_4_block_column_title">Contact</span>
+                </div>
+                <div class="arpc_4_block_column_price arpc_4_block_column_phone column">
+                    <span class="arpc_4_block_column_title">Contact</span>
 
-                                </div>
-                                <div class="arpc_4_block_column_price arpc_4_block_column_date column">
-                                    <span class="arpc_4_block_column_title">Date Of Join</span>
+                </div>
+                <div class="arpc_4_block_column_price arpc_4_block_column_date column">
+                    <span class="arpc_4_block_column_title">Date Of Join</span>
 
-                                </div>
-                                <div class="arpc_4_block_column_edit column_btn">
-                                    <span class="arpc_4_block_column_title">Actions</span>
+                </div>
+                <div class="arpc_4_block_column_edit column_btn">
+                    <span class="arpc_4_block_column_title">Actions</span>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>`,
+                </div>
+            </div>
+        </div>
+
+        <div class="arpc_3_block">
+            <div id="registerForm" class="arpc_3_block_form">
+                <div class="arpc_3_block_form_row_1">
+                    <div class="arpc_3_block_form_row_1_group_1">
+                        <h1 class="row_1_h1">Name of Coach</h1>
+                        <input type="text" id="nameInp" required name="name" class="row_1_input">
+                    </div>
+                    <div class="arpc_3_block_form_row_1_group_2">
+                        <h1 class="row_1_h1">Date of Join</h1>
+                        <input type="date" id="date" required name="dateofjoin" class="row_1_input">
+                    </div>
+                </div>
+                <div class="arpc_3_block_form_row_2">
+                    <div class="arpc_3_block_form_row_2_group_1">
+                        <h1 class="row_2_h1">Email Address</h1>
+                        <input type="text" id="email" required name="email" class="row_2_input">
+                    </div>
+                    <div class="arpc_3_block_form_row_2_group_2">
+                        <h1 class="row_2_h1">Phone</h1>
+                        <input type="number" id="phone" required name="phone" class="row_2_input">
+                    </div>
+                </div>
+                <h1 class="coach_available_days_title">Available Days</h1>
+                <div class="coach_available_days">
+                    <div class="coach_available_days_row">
+                        <input type="checkbox" name="" id="">Mon
+                    </div>
+                    <div class="coach_available_days_row">
+                        <input type="checkbox" name="" id="">Tue
+                    </div>
+                    <div class="coach_available_days_row">
+                        <input type="checkbox" name="" id="">Wed
+                    </div>
+                    <div class="coach_available_days_row">
+                        <input type="checkbox" name="" id="">Thu
+                    </div>
+                    <div class="coach_available_days_row">
+                        <input type="checkbox" name="" id="">Fri
+                    </div>
+                    <div class="coach_available_days_row">
+                        <input type="checkbox" name="" id="">Sat
+                    </div>
+                    <div class="coach_available_days_row">
+                        <input type="checkbox" name="" id="">Sun
+                    </div>
+                </div>
+                <div class="form_buttons arpc_3_block_form_btn_1">
+                    <button id="registerFormBtn" class="form_button_save btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div> `,
         report: `<div class="arpc_8">
-                        <h1 class="arpc_8_title">Sales Report</h1>
-                        <!-- <form action="" class="arpc_8_form">
-                            <div class="arpc_8_form_1">
-                                <h1 class="arpc_8_h1">From Date</h1>
-                                <input type="text" class="arpc_8_input">
-                            </div>
-                            <div class="arpc_8_form_2">
-                                <h1 class="arpc_8_h1">To Date</h1>
-                                <input type="text" class="arpc_8_input">
-                            </div>
-                            <div class="arpc_8_form_3">
-                                <h1 class="arpc_8_h1">Total</h1>
-                                <input type="text" class="arpc_8_input">
-                            </div>
-                        </form> -->
-                        <input type="text" id="searchInput">
-                        <div class="arpc_8_block " id="asd">
-                            <div class="arpc_4_block_row">
-                                <div class="arpc_8_block_title">Payment History</div>
-                            </div>
-                            <div class="arpc_4_block_row">
-                                <div class="arpc_4_block_column_name column">
-                                    <span class="arpc_4_block_column_title arpc_8_text">Name</span>
+        <h1 class="arpc_8_title">Sales Report</h1>
+        <div class="arpc_8_block " id="asd">
+            <div class="arpc_4_block_row">
+                <input type="text" id="searchInput" class="arpc_8_block_input" placeholder="Search">
+            </div>
+            <div class="arpc_4_block_row">
+                <div class="arpc_8_block_title">Payment History</div>
+            </div>
+            <div class="arpc_4_block_row">
+                <div class="arpc_4_block_column_name column">
+                    <span class="arpc_4_block_column_title arpc_8_text">Name</span>
 
-                                </div>
-                                <div class="arpc_4_block_column_validity arpc_4_block_column_id column">
-                                    <span class="arpc_4_block_column_title arpc_8_text">ID</span>
-                                </div>
-                                <div class="arpc_4_block_column_edit arpc_4_block_column_plan column">
-                                    <span class="arpc_4_block_column_title arpc_8_text">Plan</span>
-                                </div>
-                                <div class=" arpc_4_block_column_price column">
-                                    <span class="arpc_4_block_column_title arpc_8_text">Price</span>
-                                </div>
-                                <div class="arpc_4_block_column_price arpc_4_block_column_paid column">
-                                    <span class="arpc_4_block_column_title arpc_8_text">Date Paid</span>
+                </div>
+                <div class="arpc_4_block_column_validity arpc_4_block_column_id column">
+                    <span class="arpc_4_block_column_title arpc_8_text">ID</span>
+                </div>
+                <div class="arpc_4_block_column_edit arpc_4_block_column_plan column">
+                    <span class="arpc_4_block_column_title arpc_8_text">Plan</span>
+                </div>
+                <div class=" arpc_4_block_column_price column">
+                    <span class="arpc_4_block_column_title arpc_8_text">Price</span>
+                </div>
+                <div class="arpc_4_block_column_price arpc_4_block_column_paid column">
+                    <span class="arpc_4_block_column_title arpc_8_text">Date Paid</span>
 
-                                </div>
+                </div>
 
-                            </div>
-                        </div>
-                    </div>`
+            </div>
+        </div>
+    </div>`
     };
     window.addEventListener('load', function () {
         var page = window.location.hash.substring(1);
@@ -386,7 +461,7 @@ function panel() {
     });
 }
 panel()
-function signOut() {
+document.getElementById("signOut").addEventListener("click",()=>{
     localStorage.clear()
     window.location = "/"
-}
+})

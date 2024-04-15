@@ -954,3 +954,51 @@ input:focus {
 .arpc_3_block_form_btn_1 {
     padding-top: 30px;
 }
+
+.arpc_4_block_input,
+.arpc_8_block_input {
+    background-color: #5D57A3;
+    height: 30px;
+    border-radius: 12px;
+    padding-left: 10px;
+    color: #fff;
+}
+
+.arpc_4_block_input::placeholder,
+.arpc_8_block_input::placeholder {
+    color: #fff;
+}
+
+.arpc_7_button {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 5px 20px;
+    border: 2px solid #fff;
+    color: #1A1363;
+    border-radius: 100px;
+    background-color: #fff;
+    box-shadow: 5px 5px 10px #b1b1b1;
+    transition: 0.4s;
+}
+
+.arpc_7_button:hover {
+    color: #fff;
+    border: 2px solid #1A1363;
+    background-color: #1A1363;
+}
+
+.coach_available_days {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.coach_available_days_row {
+    display: flex;
+    gap: 10px;
+}
+
+.coach_available_days_title {
+    padding-top: 20px;
+}

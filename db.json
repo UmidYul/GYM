@@ -1,107 +1,12 @@
 {
   "admin": {
     "id": "5be7e2d39a6e4",
-    "name": "Zerox",
-    "email": "333zeroxyt@gmail.com",
+    "name": "Умид Йулдашев",
+    "email": "test@gmail.com",
     "password": "1234",
-    "phone": "+998973355775"
+    "phone": "98973355775"
   },
-  "members": [
-    {
-      "id": 1712418463734,
-      "name": "Umid",
-      "email": "yumid253@gmail.com",
-      "password": "1234",
-      "phone": "+998905329686",
-      "dateofjoin": "2024-01-01",
-      "status": "Active",
-      "payments": [
-        {
-          "id": 1712925602688,
-          "plan": "1 month",
-          "validity": 13,
-          "price": 100000,
-          "payment_date": "2024-08-17",
-          "expire_date": "2029-04-09"
-        }
-      ]
-    },
-    {
-      "id": 1712418463735,
-      "name": "Shoh",
-      "email": "yumid253@gmail.com",
-      "password": "1234",
-      "phone": "+998905329686",
-      "dateofjoin": "2024-01-01",
-      "status": "Expired",
-      "payments": [
-        {
-          "id": 1712925612688,
-          "plan": "1 month",
-          "validity": 13,
-          "price": 100000,
-          "payment_date": "2024-08-17",
-          "expire_date": "2029-04-09"
-        }
-      ]
-    },
-    {
-      "id": 1712992855292,
-      "name": "Zerox123",
-      "email": "333zesdafroxy123t@gmail.com",
-      "password": "1412123",
-      "phone": "+998124321434",
-      "dateofjoin": "2024-04-13",
-      "status": "Active",
-      "payments": [
-        {
-          "plan": "1",
-          "validity": 33,
-          "price": 67567,
-          "payment_date": "2024-04-13",
-          "expire_date": "2024-05-16"
-        }
-      ]
-    },
-    {
-      "id": 1712993004173,
-      "name": "eqwe1433214",
-      "email": "4324324234",
-      "password": "234",
-      "phone": "+9984324234",
-      "dateofjoin": "0004-04-04",
-      "status": "Active",
-      "payments": [
-        {
-          "plan": "1",
-          "validity": 33,
-          "price": 67567,
-          "payment_date": "0004-04-04",
-          "expire_date": "0004-05-07"
-        }
-      ]
-    }
-  ],
-  "plans": [
-    {
-      "id": 1712980497863,
-      "name": "1",
-      "validity": 33,
-      "price": 67567
-    }
-  ],
-  "coaches": [
-    {
-      "id": 1712897557648,
-      "name": "Timur",
-      "phone": "+998905329686",
-      "email": "yumid253@gmail.com",
-      "dateofjoin": "2024-01-01",
-      "dateofwork": [
-        "Tuesday",
-        "Monday",
-        "Sunday"
-      ]
-    }
-  ]
+  "members": [],
+  "plans": [],
+  "coaches": []
 }

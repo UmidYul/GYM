@@ -308,10 +308,13 @@ function panel() {
                             </div>
                         </div>`,
         members: ` <div class="arpc_6">
-                            <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                            maxlength="13" placeholder="Search By ID" id="searchInput">
+                            <div class="arpc_6">
                             <h1 class="arpc_6_title">Active Members</h1>
                             <div class="arpc_4_block">
+                                <div class="arpc_4_block_row">
+                                    <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                    maxlength="13" placeholder="Search By ID" id="searchInput" class="arpc_4_block_input">
+                                </div>
                                 <div class="arpc_4_block_row">
                                     <div class="arpc_4_block_column_name column">
                                         <span class="arpc_4_block_column_title">Name</span>
@@ -332,33 +335,33 @@ function panel() {
                             </div>
                         </div>
 `,
-        coaches: `   <div class="arpc_7 ">
-                        <h1 class="arpc_6_title">Active Coaches</h1>
-                        <div class="arpc_4_block">
-                            <div class="arpc_4_block_row">
-                                <div class="arpc_4_block_column_name column">
-                                    <span class="arpc_4_block_column_title">Name</span>
+        coaches: `   <div class="arpc_7 " id="formField">
+        <h1 class="arpc_6_title">Active Coaches</h1>
+        <button class="arpc_7_button " id="coachBtn">Add Coach</button>
+        <div class="arpc_4_block ">
+            <div class="arpc_4_block_row">
+                <div class="arpc_4_block_column_name column">
+                    <span class="arpc_4_block_column_title">Name</span>
 
-                                </div>
-                                <div class="arpc_4_block_column_validity arpc_4_block_column_id column">
-                                    <span class="arpc_4_block_column_title">Coach ID</span>
+                </div>
+                <div class="arpc_4_block_column_validity arpc_4_block_column_id column">
+                    <span class="arpc_4_block_column_title">Coach ID</span>
 
-                                </div>
-                                <div class="arpc_4_block_column_price arpc_4_block_column_phone column">
-                                    <span class="arpc_4_block_column_title">Contact</span>
+                </div>
+                <div class="arpc_4_block_column_price arpc_4_block_column_phone column">
+                    <span class="arpc_4_block_column_title">Contact</span>
 
-                                </div>
-                                <div class="arpc_4_block_column_price arpc_4_block_column_date column">
-                                    <span class="arpc_4_block_column_title">Date Of Join</span>
+                </div>
+                <div class="arpc_4_block_column_price arpc_4_block_column_date column">
+                    <span class="arpc_4_block_column_title">Date Of Join</span>
 
-                                </div>
-                                <div class="arpc_4_block_column_edit column_btn">
-                                    <span class="arpc_4_block_column_title">Actions</span>
+                </div>
+                <div class="arpc_4_block_column_edit column_btn">
+                    <span class="arpc_4_block_column_title">Actions</span>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>`,
+                </div>
+            </div>
+        </div>`,
         report: `<div class="arpc_8">
                         <h1 class="arpc_8_title">Sales Report</h1>
                         <!-- <form action="" class="arpc_8_form">
@@ -375,7 +378,7 @@ function panel() {
                                 <input type="text" class="arpc_8_input">
                             </div>
                         </form> -->
-                        <input type="number" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        <input type="number" class="arpc_4_block_input" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                         maxlength="13" placeholder="Search By ID" id="searchInput">
                         <div class="arpc_8_block " id="asd">
                             <div class="arpc_4_block_row">

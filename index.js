@@ -139,13 +139,6 @@ app.post("/register", async (req, res) => {
     const currentDate = new Date(dateofjoin);
     const tomorrow = new Date(currentDate.valueOf() + (86400000 * validity));
     const expire = tomorrow.toISOString().split('T')[0]
-    // Проверяем, начинается ли переменная N с "998"
-    if (!phone.startsWith('998')) {
-        phone = '+998' + phone;
-    } else {
-        phone = '+' + phone;
-    }
-
     members.push({
         id: id,
         name: name,
@@ -315,15 +308,25 @@ app.post("/removePlan", async (req, res) => {
         res.send(JSON.stringify(404))
     }
 })
+app.post("/add-coaches", async (req, res) => {
+    const { name, dateofjoin, email, phone, weekday } = req.body
+    await db.read()
+    const { coaches } = db.data
+    coaches.push({
+        id: Date.now(),
+        name: name,
+        phone: phone,
+        email: email,
+        dateofjoin: dateofjoin,
+        dateofwork: weekday
+    })
+    db.write()
+    res.redirect("/admin#coaches")
+})
 app.post("/edit-admin-data", async (req, res) => {
     let { name, phone, email } = req.body
     await db.read()
     const { admin } = db.data
-    if (!phone.startsWith('998')) {
-        phone = '+998' + phone;
-    } else {
-        phone = '+' + phone;
-    }
     admin.name = name
     admin.phone = phone
     admin.email = email

@@ -20,7 +20,7 @@ fetch("/getCoaches", {
         justify-content: center;"><img style="width:70%; height:70%;" src="/images/profile_person_white.png"></div>
         <div class="arpc_1_row_2_block_2_list_row_name">${i.name}</div>
     </div>
-        `)
+        `).join(" ")
     })
 fetch("/getUsers", {
     method: 'POST',
@@ -103,7 +103,10 @@ fetch("/getUsers", {
                 return user.status === 'Active';
             }).length;
             var activeUsersPercentage = Math.round((activeUsers / totalUsers) * 100);
-            perDiv.textContent = activeUsersPercentage + "%"
+            if (activeUsersPercentage) {
+                perDiv.textContent = activeUsersPercentage + "%"
+
+            }
         }
         Search()
         statistic()

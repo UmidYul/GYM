@@ -1,0 +1,12 @@
+{
+  "admin": {
+    "id": "5be7e2d39a6e4",
+    "name": "Умид Йулдашев",
+    "email": "test@gmail.com",
+    "password": "1234",
+    "phone": "98973355775"
+  },
+  "members": [],
+  "plans": [],
+  "coaches": []
+}

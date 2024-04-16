@@ -18,7 +18,11 @@ const port = 3000
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static(__dirname + "/public/"))
-
+app.use((err, req, res, next) => {
+    if(err){
+        res.send(err)
+    }
+})
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/views/main.html")
 })

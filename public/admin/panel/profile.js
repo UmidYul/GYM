@@ -13,7 +13,7 @@ document.getElementsByClassName("card_info")[0].innerHTML = `
     </span><span>${info.password}</span></div>
 `
 document.getElementById("changeName").value = info.name
-document.getElementById("changePhone").value = info.phone.slice(1)
+document.getElementById("changePhone").value = info.phone
 document.getElementById("changeEmail").value = info.email
 
 // Change Data

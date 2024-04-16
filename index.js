@@ -9,7 +9,7 @@ import { SendEmail } from "./email.js"
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const file = join(__dirname, '/tmp/db.json')
+const file = join(__dirname, '/tmp/','db.json')
 const adapter = new JSONFile(file)
 const defaultData = { admin: [], members: [], plans: [], coaches: [] }
 const db = new Low(adapter, defaultData)
@@ -275,7 +275,8 @@ app.post("/add-plan", async (req, res) => {
         validity: Number(validity),
         price: Number(price)
     })
-    db.write()
+    res.send(db.data)
+    // db.write()
     res.redirect("/admin#plan")
 })
 app.post("/getPlans", async (req, res) => {

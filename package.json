@@ -8,12 +8,12 @@
     "nodemon": "^2.0.22"
   },
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon index.js"
   },
   "type": "module",
   "name": "gym",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
   "author": "",
   "license": "ISC",
   "description": ""

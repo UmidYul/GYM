@@ -4,6 +4,7 @@
     padding: 0;
     margin: 0;
     font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
 }
 
 input::-webkit-outer-spin-button,
@@ -1001,4 +1002,155 @@ input:focus {
 
 .coach_available_days_title {
     padding-top: 20px;
+}
+
+@media (max-width: 1024px) {
+    .section_1 {
+        height: auto;
+        min-height: 100vh;
+        align-items: stretch;
+    }
+
+    .container {
+        width: 100%;
+        height: auto;
+        min-height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .profile_nav_a::after {
+        display: none;
+    }
+
+    .row {
+        width: 94%;
+    }
+
+    .arpc_1,
+    .arpc_1_row_2,
+    .arpc_2,
+    .arpc_3_block_form_row_1,
+    .arpc_3_block_form_row_2,
+    .arpc_3_block_form_row_3,
+    .arpc_4_row,
+    .arpc_5_block_form_row_1,
+    .arpc_8_form,
+    .coach_available_days,
+    .coach_available_days_row {
+        flex-direction: column;
+    }
+
+    .arpc_1_row_1_block_1,
+    .arpc_1_row_1_block_4,
+    .arpc_2_left_card,
+    .arpc_2_right_user_info,
+    .arpc_2_right_password {
+        width: 100%;
+        height: auto;
+        min-height: 150px;
+    }
+
+    .arpc_2_right {
+        width: 100%;
+    }
+
+    .not_full_width {
+        width: 100%;
+    }
+
+    .arpc_4_block {
+        overflow-x: auto;
+    }
+
+    .arpc_4_block_row {
+        min-width: 720px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .admin_left_panel,
+    .admin_right_panel {
+        width: 100%;
+    }
+
+    .profile_information {
+        padding-top: 22px;
+    }
+
+    .profiole_nav_ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+        padding: 20px 12px 0;
+    }
+
+    .profile_nav_li {
+        padding: 0;
+    }
+
+    .profile_nav_a {
+        border-radius: 10px;
+        justify-content: center;
+        font-size: 12px;
+        gap: 8px;
+    }
+
+    .profile_log_out {
+        padding: 16px 14px 22px;
+        justify-content: center;
+    }
+
+    .admin_right_panel_header {
+        padding-top: 18px;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .arpc_3_subtitle,
+    .arpc_5_subtitle,
+    .arpc_6_title,
+    .arpc_8_title {
+        font-size: 26px;
+    }
+
+    .arpc_3_title,
+    .arpc_5_title {
+        font-size: 32px;
+    }
+
+    .arpc_3_block,
+    .arpc_5_block,
+    .arpc_8_form {
+        padding: 24px 16px;
+    }
+
+    .arpc_4_form {
+        padding: 20px 16px 26px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profiole_nav_ul {
+        grid-template-columns: 1fr;
+    }
+
+    .profile_nav_a {
+        justify-content: flex-start;
+        padding: 10px 12px;
+    }
+
+    .arpc_1_row_2_block_2,
+    .arpc_1_row_3_block_3 {
+        width: 100%;
+    }
+
+    .arpc_3_block,
+    .arpc_5_block {
+        padding: 18px 12px;
+    }
 }

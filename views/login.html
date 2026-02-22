@@ -42,14 +42,14 @@
             <div class="sign_in">
                 <div class="sign_in_left">
                     <div class="sign_in_title">Sign-in</div>
-                    <div class="formLogin">
+                    <form class="formLogin" onsubmit="Submit(event)">
                         <p id="msg"></p>
-                        <h1 class="email_title">Email<span>*</span></h1>
-                        <input required type="text" id="email">
-                        <h1 class="password_title">Password<span>*</span></h1>
-                        <input required type="password" id="password"> <br>
-                        <button id="Submit" onclick="Submit()">Login</button>
-                    </div>
+                        <label class="email_title" for="email">Email<span>*</span></label>
+                        <input required type="email" id="email" autocomplete="email">
+                        <label class="password_title" for="password">Password<span>*</span></label>
+                        <input required type="password" id="password" autocomplete="current-password"> <br>
+                        <button id="Submit" type="submit">Login</button>
+                    </form>
                 </div>
                 <div class="sign_in_right"><img src="/images/body_part_1_img.png" alt=""></div>
             </div>
@@ -61,8 +61,57 @@
     if (localStorage.getItem("info")) {
         window.location = "/"
     }
-    function Submit() {
-        console.log(1423);
+
+    const submitButton = document.getElementById("Submit")
+
+    function setSubmittingState(isLoading) {
+        submitButton.disabled = isLoading
+        submitButton.textContent = isLoading ? "Loading..." : "Login"
+    }
+
+    function showWarningMessage(message) {
+        const wrapper = document.getElementsByClassName("wrapper-warning")[0]
+        const msgErr = document.getElementById("msg_err")
+        wrapper.style.display = "block"
+        msgErr.innerText = message
+        setTimeout(() => {
+            wrapper.classList.remove("animate__backInRight")
+            wrapper.classList.add("animate__backOutRight")
+            setTimeout(() => {
+                wrapper.style.display = "none"
+                wrapper.classList.add("animate__backInRight")
+                wrapper.classList.remove("animate__backOutRight")
+            }, 500)
+        }, 5000)
+    }
+
+    function validateCredentials(email, password) {
+        const normalizedEmail = email.trim()
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!normalizedEmail || !emailPattern.test(normalizedEmail)) {
+            return "Введите корректный email."
+        }
+        if (!password || password.length < 6) {
+            return "Пароль должен содержать минимум 6 символов."
+        }
+        return ""
+    }
+
+    function Submit(event) {
+        event.preventDefault()
+        if (submitButton.disabled) {
+            return
+        }
+
+        const emailInput = document.getElementById("email")
+        const passwordInput = document.getElementById("password")
+        const validationError = validateCredentials(emailInput.value, passwordInput.value)
+        if (validationError) {
+            showWarningMessage(validationError)
+            return
+        }
+
+        setSubmittingState(true)
         fetch('https://api.ipify.org?format=json')
             .then(response => response.json())
             .then(data => {
@@ -80,51 +129,53 @@
                 seconds = (seconds < 10) ? '0' + seconds : seconds;
                 let formattedDate = day + '.' + month + '.' + year;
                 let formattedTime = hours + ':' + minutes + ':' + seconds;
-                const email = document.getElementById("email")
-                const password = document.getElementById("password")
-                const msg_success = document.getElementById("msg_success")
-                const msg_err = document.getElementById("msg_err")
+                const msgSuccess = document.getElementById("msg_success")
+
                 fetch("/login", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ email: email.value, password: password.value, ip: data.ip, date: `${formattedDate} ${formattedTime}` })
+                    body: JSON.stringify({
+                        email: emailInput.value.trim(),
+                        password: passwordInput.value,
+                        ip: data.ip,
+                        date: `${formattedDate} ${formattedTime}`
+                    })
                 })
                     .then(res => res.json())
                     .then(dat => {
-                        console.log(dat);
                         if (dat.status == 404) {
-                            document.getElementsByClassName("wrapper-warning")[0].style.display = "block"
-                            msg_err.innerText = "Простите Логин или Пароль Не Правильные Попробуйте Заново!"
-                            setTimeout(() => {
-                                document.getElementsByClassName("wrapper-warning")[0].classList.remove("animate__backInRight")
-                                document.getElementsByClassName("wrapper-warning")[0].classList.add("animate__backOutRight")
-                                setTimeout(() => {
-                                    document.getElementsByClassName("wrapper-warning")[0].style.display = "none"
-                                    document.getElementsByClassName("wrapper-warning")[0].classList.add("animate__backInRight")
-                                    document.getElementsByClassName("wrapper-warning")[0].classList.remove("animate__backOutRight")
-
-                                }, 500);
-                            }, 5000);
+                            setSubmittingState(false)
+                            showWarningMessage("Простите, логин или пароль неправильные. Попробуйте снова.")
                         }
                         if (dat.status == 200) {
                             localStorage.setItem("info", JSON.stringify(dat))
                             document.getElementsByClassName("wrapper-success")[0].style.display = "block"
-                            msg_success.innerText = `${dat.name} Добро Пожаловать!`
+                            msgSuccess.innerText = `${dat.name} Добро пожаловать!`
                             setTimeout(() => {
                                 if (dat.access == true) {
                                     window.location = "/admin"
                                 } else {
                                     window.location = "/"
                                 }
-                            }, 1000);
+                            }, 1000)
                         }
+                        if (dat.status != 200 && dat.status != 404) {
+                            setSubmittingState(false)
+                            showWarningMessage("Request failed. Please try again.")
+                        }
+                    })
+                    .catch(() => {
+                        setSubmittingState(false)
+                        showWarningMessage("Request failed. Please try again.")
                     })
             })
             .catch(error => {
-                console.error('Произошла ошибка при получении IP-адреса:', error);
-            });        
+                setSubmittingState(false)
+                console.error('Произошла ошибка при получении IP-адреса:', error)
+                showWarningMessage("Не удалось получить IP-адрес. Попробуйте снова.")
+            })
     }
 
 </script>

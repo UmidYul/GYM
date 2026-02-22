@@ -43,8 +43,14 @@
     <div class="section_1">
         <div class="container">
             <div class="header">
-                <div class="header_logo"><a href="/"><img src="/images/logoclient.png" alt="logoclient"></a></div>
-                <div class="header_nav">
+                <div class="header_top">
+                    <div class="header_logo"><a href="/"><img src="/images/logoclient.png" alt="logoclient"></a></div>
+                    <button class="menu_toggle" type="button" aria-expanded="false" aria-controls="siteNav"
+                        aria-label="Toggle navigation">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+                <div class="header_nav" id="siteNav">
                     <ul class="headaer_ul">
                         <li class="header_li"><a href="#about" class="header_a">О Нас</a></li>
                         <li class="header_li"><a href="#plan" class="header_a">План</a></li>
@@ -252,6 +258,35 @@
         const prof = document.getElementsByClassName("profile")[0]
         prof.style.display = "none"
     }
+    const headerNav = document.getElementById("siteNav")
+    const menuToggle = document.getElementsByClassName("menu_toggle")[0]
+    const closeMobileMenu = () => {
+        if (window.innerWidth <= 768) {
+            headerNav.classList.remove("is-open")
+            menuToggle.setAttribute("aria-expanded", "false")
+        }
+    }
+    menuToggle.addEventListener("click", () => {
+        const opened = headerNav.classList.toggle("is-open")
+        menuToggle.setAttribute("aria-expanded", String(opened))
+    })
+    document.querySelectorAll(".header_a").forEach((link) => {
+        link.addEventListener("click", closeMobileMenu)
+    })
+    document.addEventListener("click", (event) => {
+        if (window.innerWidth > 768) {
+            return
+        }
+        const target = event.target
+        if (!headerNav.contains(target) && !menuToggle.contains(target)) {
+            closeMobileMenu()
+        }
+    })
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeMobileMenu()
+        }
+    })
     const btn = document.getElementsByClassName("loginBtn")[0]
     if (localStorage.getItem("info")) {
         const info = JSON.parse(localStorage.getItem("info"))
@@ -260,6 +295,7 @@
         <i class="fa-solid fa-table-columns"></i> Dashboard
             `
             btn.addEventListener('click', () => {
+                closeMobileMenu()
                 window.location = "/admin"
             })
         }
@@ -268,6 +304,7 @@
             <i class="fa-solid fa-user"></i> Profile
             `
             btn.addEventListener('click', () => {
+                closeMobileMenu()
                 const prof = document.getElementsByClassName("profile")[0]
                 prof.style.display = "block"
             })
@@ -275,6 +312,7 @@
     } else {
         btn.innerText = "Sign In"
         btn.addEventListener('click', () => {
+            closeMobileMenu()
             window.location = "/login"
         })
     }
